@@ -8,9 +8,8 @@
 <url> <loc>https://liko-12.github.io/Documentation/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://liko-12.github.io/Documentation/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://liko-12.github.io/Documentation/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://liko-12.github.io/Documentation/docs/doc1</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/doc1" /> </url>
-<url> <loc>https://liko-12.github.io/Documentation/docs/doc2</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/doc2" /> </url>
-<url> <loc>https://liko-12.github.io/Documentation/docs/doc3</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/doc3" /> </url>
-<url> <loc>https://liko-12.github.io/Documentation/docs/doc4</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/doc4" /> </url>
-<url> <loc>https://liko-12.github.io/Documentation/docs/doc5</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/doc5" /> </url>
+<url> <loc>https://liko-12.github.io/Documentation/docs/getting_started</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/getting_started" /> </url>
+<url> <loc>https://liko-12.github.io/Documentation/docs/how_to_install_liko-12</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/how_to_install_liko-12" /> </url>
+<url> <loc>https://liko-12.github.io/Documentation/docs/what_is_liko-12</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/what_is_liko-12" /> </url>
+<url> <loc>https://liko-12.github.io/Documentation/docs/your_first_liko-12_program</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/Documentation/docs/your_first_liko-12_program" /> </url>
 </urlset>
