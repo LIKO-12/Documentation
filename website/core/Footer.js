@@ -52,7 +52,7 @@ class Footer extends React.Component {
             <a href={this.pageUrl('users.html', this.props.language)}>
               User Showcase
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
+            <a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a>
             <a
               href="https://twitter.com/ramilego4game"
               target="_blank"
