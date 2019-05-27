@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Test Site', // Title for your website.
+  title: 'LIKO-12', // Title for your website.
   tagline: 'A website for testing',
   url: 'https://liko-12.github.io', // Your website URL
   baseUrl: '/Documentation/', // Base URL for your project */
