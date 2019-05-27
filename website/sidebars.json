@@ -1,10 +1,11 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
+    "Introduction": [
+      "what_is_liko-12",
+      "how_to_install_liko-12",
+      "getting_started",
+      "your_first_liko-12_program"
+    ]
   },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
-  }
+  "docs-other": {}
 }
