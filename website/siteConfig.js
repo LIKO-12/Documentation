@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'LIKO-12', // Title for your website.
-  tagline: 'An open-source fantasy computer.',
+  tagline: 'An open-source fantasy computer',
   url: 'https://liko-12.github.io', // Your website URL
   baseUrl: '/Documentation/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
