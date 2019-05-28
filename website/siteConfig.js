@@ -88,7 +88,8 @@ const siteConfig = {
     '/WIP/js/code-block-buttons.js',
   ],
   stylesheets: [
-    '/css/code-block-buttons.css'
+    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css',
+    '/css/code-block-buttons.css',
   ],
 
   // On page navigation for the current documentation page.
