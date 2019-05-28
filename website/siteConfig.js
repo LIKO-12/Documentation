@@ -42,12 +42,14 @@ const siteConfig = {
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
   ],
+  
+  disableHeaderTitle: true,
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.ico',
+  headerIcon: 'img/headericon.png',
   footerIcon: 'img/favicon.ico',
   favicon: 'img/favicon.ico',
 
