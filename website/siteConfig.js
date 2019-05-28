@@ -24,13 +24,13 @@ const siteConfig = {
   title: 'LIKO-12', // Title for your website.
   tagline: 'An open-source fantasy computer',
   url: 'https://liko-12.github.io', // Your website URL
-  baseUrl: '/Documentation/', // Base URL for your project */
+  baseUrl: '/WIP/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'Documentation',
+  projectName: 'WIP',
   organizationName: 'LIKO-12',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
