@@ -54,7 +54,7 @@ editors.
 
 You should see the sprite editor:
 
-![sprite_editor](./images/sprite_editor.png)
+![sprite_editor](assets/sprite_editor.png)
 
 The sprite editor, as its name suggest, is where you can edit the sprites of
 your game.
@@ -65,15 +65,15 @@ guide. For now, let's just review which ones are available right now.
 To switch between the different editors, you can click on the icons in the
 top-right corner or press Alt and Left (or Right) simultaneously.
 
-![code_editor](./images/code_editor.png)
+![code_editor](assets/code_editor.png)
 
 This is the code editor, where you can write the code of your game.
 
-![map_editor](./images/map_editor.png)
+![map_editor](assets/map_editor.png)
 
 This is the map editor, where you can create the levels of your game.
 
-![sfx_editor](./images/sfx_editor.png)
+![sfx_editor](assets/sfx_editor.png)
 
 This is the SFX editor, where you can create some sound effects for your game.
 
