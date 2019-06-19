@@ -165,9 +165,16 @@ class Index extends React.Component {
           },
           {
             content: 'Completely written in Lua, powered by LÖVE',
-            image: `${baseUrl}img/lua_logo.svg`,
+            image: `${baseUrl}img/lua_logo.png`,
             imageAlign: 'top',
             title: 'All in Lua',
+          },
+          ,
+          {
+            content: 'Available for Windows, Linux, macOS and Android',
+            image: `${baseUrl}img/platforms.png`,
+            imageAlign: 'top',
+            title: 'Multi-Platform',
           },
         ]}
       </Block>
