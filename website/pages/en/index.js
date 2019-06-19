@@ -37,7 +37,8 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = () => (
       <h2 className="projectTitle">
-        {siteConfig.title}
+        <img src={`${baseUrl}img/logo_large.png`} alt="LIKO-12 Logo"/>
+        {/*{siteConfig.title}*/}
         <small>{siteConfig.tagline}</small>
       </h2>
     );
@@ -52,7 +53,15 @@ class HomeSplash extends React.Component {
 
     const Button = props => (
       <div className="pluginWrapper buttonWrapper">
-        <a className="button" href={props.href} target={props.target}>
+        <a className="button promoButton" href={props.href} target={props.target}>
+          {props.children}
+        </a>
+      </div>
+    );
+
+    const PrimeButton = props => (
+      <div className="pluginWrapper buttonWrapper">
+        <a className="button promoButton promoPrimeButton" href={props.href} target={props.target}>
           {props.children}
         </a>
       </div>
@@ -195,9 +204,14 @@ class Index extends React.Component {
 
     return (
       <div>
-        <HomeSplash siteConfig={siteConfig} language={language} />
+        <div className="splash">
+          <div className="splashInner">
+            <HomeSplash siteConfig={siteConfig} language={language} />
+            <Features />
+          </div>
+        </div>
         <div className="mainContainer">
-          <Features />
+          
           <FeatureCallout />
           <LearnHow />
           <TryOut />

@@ -14,3 +14,63 @@
 
 @media only screen and (min-width: 1500px) {
 }
+
+.splash {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /*background: linear-gradient(to left bottom, hsl(121, 100%, 85%) 0%,hsl(221, 100%, 85%) 100%);
+    background-image: linear-gradient(to left bottom, rgb(179, 255, 180) 0%, rgb(179, 203, 255) 100%);
+    background: linear-gradient(to left bottom, hsl(120, 100%, 98%) 0%,hsl(221, 100%, 85%) 100%);*/
+    background: rgb(255, 246, 193);
+    background: linear-gradient(to left bottom, rgb(255, 246, 193) 0%,hsl(221, 100%, 85%) 100%);
+}
+
+.splashInner {
+    flex: 1;
+}
+
+.projectTitle {
+    color: rgb(52, 73, 94);
+}
+
+.promoButton {
+    color: rgb(250, 162, 27);
+
+    border-color: rgb(250, 162, 27);
+    border-radius: 32px;
+
+    margin-bottom: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+
+    padding-bottom: 12.6px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 12.6px;
+
+    font-size: 16.8px;
+    text-transform: none;
+
+    transition-delay: 0s;
+    transition-duration: 0.15s;
+    transition-property: all;
+    transition-timing-function: ease;
+}
+
+.promoButton:hover {
+    /*background-color: rgba(186, 206, 197, 0);
+    color: rgb(52, 73, 94);*/
+}
+
+.promoPrimeButton {
+    background-color: rgb(250, 162, 27);
+    color: rgb(171, 82, 54);
+}
+
+.promoPrimeButton:hover{
+    border-color: rgb(171, 82, 54);
+    background-color: rgb(171, 82, 54);
+    color: rgb(250, 162, 27)
+}
