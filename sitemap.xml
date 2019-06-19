@@ -3,11 +3,7 @@
 <url> <loc>https://liko-12.github.io/WIP/help</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/en/help" /> </url>
 <url> <loc>https://liko-12.github.io/WIP/index</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/en/index" /> </url>
 <url> <loc>https://liko-12.github.io/WIP/users</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/en/users" /> </url>
-<url> <loc>https://liko-12.github.io/WIP/blog/2017/10/24/new-version-1.0.0</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://liko-12.github.io/WIP/blog/2017/09/26/adding-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://liko-12.github.io/WIP/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://liko-12.github.io/WIP/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://liko-12.github.io/WIP/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
+<url> <loc>https://liko-12.github.io/WIP/blog/2019/06/19/customizing-the-home-page-01</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://liko-12.github.io/WIP/docs/getting_started</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/docs/getting_started" /> </url>
 <url> <loc>https://liko-12.github.io/WIP/docs/how_to_install_liko-12</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/docs/how_to_install_liko-12" /> </url>
 <url> <loc>https://liko-12.github.io/WIP/docs/what_is_liko-12</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://liko-12.github.io/WIP/docs/what_is_liko-12" /> </url>
