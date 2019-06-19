@@ -60,13 +60,13 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} />
+        {/*<Logo img_src={`${baseUrl}img/icon_large.png`}/>*/}
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
-          <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html')}>Example Link</Button>
-            <Button href={docUrl('doc2.html')}>Example Link 2</Button>
+          <PromoSection>            
+            <Button href="https://github.com/LIKO-12/LIKO-12">GitHub</Button>
+            <Button href="https://github.com/LIKO-12/LIKO-12/releases">Releases</Button>
+            <PrimeButton href={docUrl('what_is_liko-12.html')}>Getting Started</PrimeButton>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -149,16 +149,16 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/undraw_react.svg`,
+            content: 'Open-sourced since the first day, licensed under the MIT license',
+            image: `${baseUrl}img/github_mark.png`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: 'Open source',
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/undraw_operating_system.svg`,
+            content: 'Completely written in Lua, powered by LÖVE',
+            image: `${baseUrl}img/lua_logo.svg`,
             imageAlign: 'top',
-            title: 'Feature Two',
+            title: 'Written in Lua',
           },
         ]}
       </Block>
