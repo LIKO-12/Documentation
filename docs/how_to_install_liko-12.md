@@ -25,16 +25,16 @@ If you are on Android, you can get LIKO-12 directly on [Google Play](https://pla
 There are two different methods to get LIKO-12 on Linux: either using a `.love`
 file or using an AppImage. It is recommend to use the first method.
 
-### Using the `.love` file
+### Using the `.love` file (recommended)
 
 1. Install LÖVE 11.1 from [http://love2d.org](http://love2d.org)
 2. Download the universal `.love` file (`..._Universal.love`)
-3. If you want to enable HTTPS support, install the `luasec` package (either
+3. If you want to enable HTTPS support, install the `lua-sec` package (either
    with your system package manager or [LuaRocks](https://luarocks.org/));
    otherwise you can skip this
 4. Execute `love LIKO-12_..._Universal.love`
 
-> If you cannot install `luasec` for any reason, you can install `libcurl` as a
+> If you cannot install `lua-sec` for any reason, you can install `libcurl` as a
 > replacement
 
 ### Using the AppImage (only works on 64-bits systems)
@@ -44,12 +44,12 @@ file or using an AppImage. It is recommend to use the first method.
 
 1. Download the Linux .AppImage (`..._Linux_x86_64.AppImage`)
 2. Make it executablewith `chmod u+x LIKO-12_..._Linux_x86_64.AppImage`
-3. If you want to enable HTTPS support, install the `luasec` package (either
+3. If you want to enable HTTPS support, install the `lua-sec` package (either
    with your system package manager or [LuaRocks](https://luarocks.org/));
    otherwise you can skip this
 4. Execute the AppImage with `./LIKO-12_..._Linux_x86_64.AppImage`
 
-> If you cannot install `luasec` for any reason, you can install `libcurl` as a
+> If you cannot install `lua-sec` for any reason, you can install `libcurl` as a
 > replacement
 
 ## macOS
