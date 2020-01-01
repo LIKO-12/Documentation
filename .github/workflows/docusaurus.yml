@@ -19,12 +19,12 @@ jobs:
       
       - name: Configure Git
         run: |
-          git config --global user.name "action@github.com"
+          git config --global user.name "ramilego4game@user.noreply.github.com"
           git config --global user.email "GitHub Action"
       
       - name: Docusaurus
         run: |
-          echo "machine github.com login GitHub Action password ${GH_TOKEN}" > ~/.netrc
-          cd website && yarn install && GIT_USER="GitHub Action" yarn run publish-gh-pages
+          echo "machine github.com login ramilego4game password ${GITHUB_TOKEN}" > ~/.netrc
+          cd website && yarn install && GIT_USER=ramilego4game yarn run publish-gh-pages
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
