@@ -37,7 +37,7 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = () => (
       <h2 className="projectTitle">
-        <img src={`${baseUrl}img/logo_large.png`} alt="LIKO-12 Logo"/>
+        <img src={`${baseUrl}img/logo_medium.png`} alt="LIKO-12 Logo"/>
         {/*{siteConfig.title}*/}
         <small>{siteConfig.tagline}</small>
       </h2>
@@ -53,15 +53,7 @@ class HomeSplash extends React.Component {
 
     const Button = props => (
       <div className="pluginWrapper buttonWrapper">
-        <a className="button promoButton" href={props.href} target={props.target}>
-          {props.children}
-        </a>
-      </div>
-    );
-
-    const PrimeButton = props => (
-      <div className="pluginWrapper buttonWrapper">
-        <a className="button promoButton promoPrimeButton" href={props.href} target={props.target}>
+        <a className="button" href={props.href} target={props.target}>
           {props.children}
         </a>
       </div>
@@ -73,9 +65,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>            
-            <Button href="https://github.com/LIKO-12/LIKO-12">GitHub</Button>
-            <Button href="https://github.com/LIKO-12/LIKO-12/releases">Releases</Button>
-            <PrimeButton href={docUrl('what_is_liko-12.html')}>Getting Started</PrimeButton>
+            <Button href={docUrl('what_is_liko-12.html')}>Getting Started</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -211,14 +201,9 @@ class Index extends React.Component {
 
     return (
       <div>
-        <div className="splash">
-          <div className="splashInner">
-            <HomeSplash siteConfig={siteConfig} language={language} />
-            <Features />
-          </div>
-        </div>
+        <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
-          
+          <Features />
           <FeatureCallout />
           <LearnHow />
           <TryOut />
