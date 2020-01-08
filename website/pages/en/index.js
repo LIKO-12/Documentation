@@ -145,10 +145,10 @@ class Index extends React.Component {
     );
 
     const Features = () => (
-      <Block layout="fourColumn">
+      <Block layout="fourColumn" background="light">
         {[
           {
-            content: 'Open-sourced since the first day, licensed under the MIT license',
+            content: 'Open-source since the first day, licensed under the MIT license',
             image: `${baseUrl}img/github_mark.png`,
             imageAlign: 'top',
             title: 'Open source',
