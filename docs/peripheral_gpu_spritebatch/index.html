@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>GPU - spriteBatch · LIKO-12</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Spritebatch, draw multiple parts of an image at once instantly, useful for maps."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="GPU - spriteBatch · LIKO-12"/><meta property="og:type" content="website"/><meta property="og:url" content="https://liko-12.github.io/WIP/"/><meta property="og:description" content="Spritebatch, draw multiple parts of an image at once instantly, useful for maps."/><meta property="og:image" content="https://liko-12.github.io/WIP/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://liko-12.github.io/WIP/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/WIP/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://liko-12.github.io/WIP/blog/atom.xml" title="LIKO-12 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://liko-12.github.io/WIP/blog/feed.xml" title="LIKO-12 Blog RSS Feed"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/WIP/js/code-block-buttons.js"></script><script src="/WIP/js/scrollSpy.js"></script><link rel="stylesheet" href="/WIP/css/main.css"/><script src="/WIP/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/WIP/"><img class="logo" src="/WIP/img/headericon.png" alt="LIKO-12"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/WIP/docs/what_is_liko-12" target="_self">Docs</a></li><li class=""><a href="/WIP/help" target="_self">Help</a></li><li class=""><a href="/WIP/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Peripherals&#x27; Objects</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/what_is_liko-12">What is LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/how_to_install_liko-12">How to install LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/getting_started">Getting started</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/your_first_liko-12_program">Your first LIKO-12 program</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Peripherals</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_audio">Audio</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_bios">BIOS - Basic Integrated Operating System</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_cpu">CPU - Central Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_fdd">FDD - Floppy Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gamepad">Gamepad</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu">GPU - Graphics Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_hdd">HDD - Hard Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_keyboard">Keyboard</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_ram">RAM - Random Access Memory</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_touchcontrols">TouchControls - The Touch Gamepad Input</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_web">WEB</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Peripherals&#x27; Objects</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu_fontdata">GPU / fontData</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu_image">GPU / image</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu_imagedata">GPU / imageData</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu_quad">GPU / quad</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/WIP/docs/peripheral_gpu_spritebatch">GPU / spriteBatch</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/LIKO-12/WIP/edit/master/docs/peripheral_gpu_spritebatch.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">GPU - spriteBatch</h1></header><article><div><span><p>Spritebatch, draw multiple parts of an image at once instantly, useful for maps.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.9.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.9.0</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="methods"></a><a href="#methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods:</h2>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchadd"></a><a href="#spritebatchadd" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:add</h3>
+<p>Adds a sprite to the batch.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">id = spriteBatch:add(quad, x, y, r, sx, sy, ox, oy, kx, ky)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments"></a><a href="#arguments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong><quad> (quad):</strong> The quad to add.</li>
+<li><strong>[x] (number) (Default:<code>0</code>):</strong> The x position of the new sprite.</li>
+<li><strong>[y] (number) (Default:<code>0</code>):</strong> The y position of the new sprite.</li>
+<li><strong>[r] (number) (Default:<code>0</code>):</strong> The rotation of the new sprite.</li>
+<li><strong>[sx] (number) (Default:<code>1</code>):</strong> The x scale of the new sprite.</li>
+<li><strong><sy> (number):</strong> The y scale of the new sprite.</li>
+<li><strong>[ox] (number) (Default:<code>0</code>):</strong> The x origin offset of the new sprite.</li>
+<li><strong>[oy] (number) (Default:<code>0</code>):</strong> The y origin offset of the new sprite.</li>
+<li><strong>[kx] (number) (Default:<code>0</code>):</strong> The x shear factor of the new sprite.</li>
+<li><strong>[ky] (number) (Default:<code>0</code>):</strong> The y shear factor of the new sprite.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns"></a><a href="#returns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>id (number):</strong> The id of the added sprite.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchclear"></a><a href="#spritebatchclear" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:clear</h3>
+<p>Clears the sprites from the buffer.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The function returns the spritebatch object itself, so it can be used for chain calls.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">sb = spriteBatch:clear()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-1"></a><a href="#returns-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>sb (spriteBatch):</strong> The spritebatch itself.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchdraw"></a><a href="#spritebatchdraw" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:draw</h3>
+<p>Draws the sprite batch</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The function returns the spritebatch object itself, so it can be used for chain calls.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">sb = spriteBatch:draw(x, y, r, sx, sy, quad)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-1"></a><a href="#arguments-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>[x] (number) (Default:<code>0</code>):</strong> The x position to draw the sprite batch.</li>
+<li><strong>[y] (number) (Default:<code>0</code>):</strong> The y position to draw the sprite batch.</li>
+<li><strong><r> (number):</strong> The rotation to draw the sprite batch with.</li>
+<li><strong>[sx] (number) (Default:<code>1</code>):</strong> The x scale to draw the sprite batch with.</li>
+<li><strong>[sy] (number) (Default:<code>1</code>):</strong> The y sacle to draw the sprite batch with.</li>
+<li><strong>[quad] (quad) (Default:<code>nil</code>):</strong> The quad to draw the sprite batch with.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-2"></a><a href="#returns-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>sb (spriteBatch):</strong> The spritebatch itself.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchflush"></a><a href="#spritebatchflush" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:flush</h3>
+<p>Immediately refreshes the sprite data.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The function returns the spritebatch object itself, so it can be used for chain calls.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">sb = spriteBatch:<span class="hljs-built_in">flush</span>()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-3"></a><a href="#returns-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>sb (spriteBatch):</strong> The spritebatch itself.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchgetbuffersize"></a><a href="#spritebatchgetbuffersize" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:getBufferSize</h3>
+<p>Returns the buffer size.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">size = spriteBatch:getBufferSize()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-4"></a><a href="#returns-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>size (number):</strong> The size of the buffer.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchgetcount"></a><a href="#spritebatchgetcount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:getCount</h3>
+<p>Returns the number of sprites currently in the batch.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">count = spriteBatch:getCount()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-5"></a><a href="#returns-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>count (number):</strong> Number of sprites in the batch..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchset"></a><a href="#spritebatchset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:set</h3>
+<p>Changes a sprite to the batch.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The function returns the spritebatch object itself, so it can be used for chain calls.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">sb = spriteBatch:set(id, quad, x, y, r, sx, sy, ox, oy, kx, ky)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-2"></a><a href="#arguments-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong><id> (number):</strong> The index of the sprite to change.</li>
+<li><strong><quad> (quad):</strong> The quad to add.</li>
+<li><strong>[x] (number) (Default:<code>0</code>):</strong> The x position of the new sprite.</li>
+<li><strong>[y] (number) (Default:<code>0</code>):</strong> The y position of the new sprite.</li>
+<li><strong>[r] (number) (Default:<code>0</code>):</strong> The rotation of the new sprite.</li>
+<li><strong>[sx] (number) (Default:<code>1</code>):</strong> The x scale of the new sprite.</li>
+<li><strong><sy> (number):</strong> The y scale of the new sprite.</li>
+<li><strong>[ox] (number) (Default:<code>0</code>):</strong> The x origin offset of the new sprite.</li>
+<li><strong>[oy] (number) (Default:<code>0</code>):</strong> The y origin offset of the new sprite.</li>
+<li><strong>[kx] (number) (Default:<code>0</code>):</strong> The x shear factor of the new sprite.</li>
+<li><strong>[ky] (number) (Default:<code>0</code>):</strong> The y shear factor of the new sprite.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-6"></a><a href="#returns-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>sb (spriteBatch):</strong> The spritebatch itself.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchsetbuffersize"></a><a href="#spritebatchsetbuffersize" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:setBufferSize</h3>
+<p>Sets the buffer size.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The function returns the spritebatch object itself, so it can be used for chain calls.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">sb = spriteBatch:setBufferSize(size)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-3"></a><a href="#arguments-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong><size> (number):</strong> The new buffer size.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-7"></a><a href="#returns-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>sb (spriteBatch):</strong> The spritebatch itself.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="spritebatchusage"></a><a href="#spritebatchusage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spriteBatch:usage</h3>
+<p>Returns the batch usage.</p>
+<ul>
+<li><strong>Available since:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>spriteBatch:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">usage = spriteBatch:usage()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-8"></a><a href="#returns-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>usage (string):</strong> The usage of the sprite batch.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/WIP/docs/peripheral_gpu_quad"><span class="arrow-prev">← </span><span>GPU / quad</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#methods">Methods:</a><ul class="toc-headings"><li><a href="#spritebatchadd">spriteBatch:add</a></li><li><a href="#spritebatchclear">spriteBatch:clear</a></li><li><a href="#spritebatchdraw">spriteBatch:draw</a></li><li><a href="#spritebatchflush">spriteBatch:flush</a></li><li><a href="#spritebatchgetbuffersize">spriteBatch:getBufferSize</a></li><li><a href="#spritebatchgetcount">spriteBatch:getCount</a></li><li><a href="#spritebatchset">spriteBatch:set</a></li><li><a href="#spritebatchsetbuffersize">spriteBatch:setBufferSize</a></li><li><a href="#spritebatchusage">spriteBatch:usage</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/WIP/" class="nav-home"><img src="/WIP/img/favicon.ico" alt="LIKO-12"/></a><div><h5>Docs</h5><a href="/WIP/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/WIP/docs/en/doc2.html">Guides (or other categories)</a><a href="/WIP/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a><a href="https://twitter.com/ramilego4game" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/WIP/blog">Blog</a><a href="https://github.com/LIKO-12">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/LIKO-12/LIKO-12/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 The LIKO-12 Organization</section></footer></div></body></html>
