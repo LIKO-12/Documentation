@@ -91,41 +91,41 @@
 <hr>
 <h5><a class="anchor" aria-hidden="true" id="1-translate-drawing-positions"></a><a href="#1-translate-drawing-positions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Translate drawing positions:</h5>
 <p>Shifts all drawing operations.</p>
-<pre><code class="hljs css language-lua">GPU.cam(translate, x, y)
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"translate"</span>, x, y)
 </code></pre>
 <h6><a class="anchor" aria-hidden="true" id="arguments-1"></a><a href="#arguments-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
 <ul>
-<li><strong><code>translate</code> (string)</strong></li>
+<li><strong><code>&quot;translate&quot;</code> (string)</strong></li>
 <li><strong>x (number):</strong> The translation relative to the x-axis..</li>
 <li><strong>y (number):</strong> The translation relative to the y-axis..</li>
 </ul>
 <hr>
 <h5><a class="anchor" aria-hidden="true" id="2-scale-drawing-operations"></a><a href="#2-scale-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Scale drawing operations:</h5>
 <p>Scales all the drawing operations.</p>
-<pre><code class="hljs css language-lua">GPU.cam(scale, sx, sy)
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"scale"</span>, sx, sy)
 </code></pre>
 <h6><a class="anchor" aria-hidden="true" id="arguments-2"></a><a href="#arguments-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
 <ul>
-<li><strong><code>scale</code> (string)</strong></li>
+<li><strong><code>&quot;scale&quot;</code> (string)</strong></li>
 <li><strong>sx (number):</strong> The scaling in the direction of the x-axis..</li>
 <li><strong>sy (number):</strong> The scaling in the direction of the y-axis..</li>
 </ul>
 <hr>
 <h5><a class="anchor" aria-hidden="true" id="3-rotate-drawing-operations"></a><a href="#3-rotate-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Rotate drawing operations:</h5>
-<pre><code class="hljs css language-lua">GPU.cam(rotate, a)
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"rotate"</span>, a)
 </code></pre>
 <h6><a class="anchor" aria-hidden="true" id="arguments-3"></a><a href="#arguments-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
 <ul>
-<li><strong><code>rotate</code> (string)</strong></li>
+<li><strong><code>&quot;rotate&quot;</code> (string)</strong></li>
 <li><strong>a (number):</strong> The amount to rotate the coordinate system in radians..</li>
 </ul>
 <hr>
 <h5><a class="anchor" aria-hidden="true" id="4-shear-drawing-operations"></a><a href="#4-shear-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Shear drawing operations:</h5>
-<pre><code class="hljs css language-lua">GPU.cam(shear, x, y)
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"shear"</span>, x, y)
 </code></pre>
 <h6><a class="anchor" aria-hidden="true" id="arguments-4"></a><a href="#arguments-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
 <ul>
-<li><strong><code>shear</code> (string)</strong></li>
+<li><strong><code>&quot;shear&quot;</code> (string)</strong></li>
 <li><strong>x (number):</strong> The shear factor on the x-axis..</li>
 <li><strong>y (number):</strong> The shear factor on the y-axis..</li>
 </ul>
@@ -640,7 +640,7 @@
 <li><strong>x (number):</strong> The X coord to draw at..</li>
 <li><strong>y (number):</strong> The y coord to draw at..</li>
 <li><strong>limit (number):</strong> Wrap the line after this many horizontal pixels..</li>
-<li><strong>align (string) (Default:<code>left</code>):</strong> The text alignment (can be &quot;left&quot;, &quot;center&quot; and &quot;right&quot;)..</li>
+<li><strong>align (string) (Default:<code>&quot;left&quot;</code>):</strong> The text alignment (can be &quot;left&quot;, &quot;center&quot; and &quot;right&quot;)..</li>
 <li><strong>r (number):</strong> Rotation (radians)..</li>
 <li><strong>sx (number):</strong> Scale factor (x-axis)..</li>
 <li><strong>sy (number):</strong> Scale factor (y-axis)..</li>
