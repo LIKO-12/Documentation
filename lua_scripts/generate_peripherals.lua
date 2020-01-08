@@ -368,6 +368,88 @@ for peripheralName, peripheral in pairs(documentation.Peripherals) do
     assert(file:close())
 end
 
+--== Generate peripherals' objects documentation ==--
+
+ANSI.setGraphicsMode(0, 1, 34) --Blue output
+print("Generating peripherals' objects documentation...")
+ANSI.setGraphicsMode(0, 1, 36) --Cyan output
+
+local function generateObject(file, parentName, name, object, level)
+    level = level or 1 --Root heading level
+
+    local function heading(sublevel)
+        return string.rep("#", level+sublevel).." "
+    end
+
+    if object.fullDescription then
+        file:write("\n")
+        file:write(object.fullDescription.."\n")
+    elseif object.shortDescription then
+        file:write("\n")
+        file:write(object.shortDescription.."\n")
+    end
+
+    file:write("\n")
+    file:write("* **Available since:** _"..parentName..":_ v"..table.concat(object.availableSince[1], ".")..", _LIKO-12:_ v"..table.concat(object.availableSince[2], ".").."\n")
+    file:write("* **Last updated in:** _"..parentName..":_ v"..table.concat(object.lastUpdatedIn[1], ".")..", _LIKO-12:_ v"..table.concat(object.lastUpdatedIn[2], ".").."\n")
+
+    if object.notes then
+        for k, note in ipairs(object.notes) do
+            file:write("\n")
+            file:write("> "..note:gsub("\n","\n> ").."\n")
+        end
+    end
+
+    if object.methods then
+        file:write("\n")
+        file:write(heading(1).."Methods:\n")
+        
+        --Sort the methods according to their names
+        local methodsList = {}
+        for methodName, method in pairs(object.methods) do
+            table.insert(methodsList, methodName)
+        end
+        table.sort(methodsList)
+
+        for k, methodName in ipairs(methodsList) do
+            file:write("\n")
+            file:write("---\n")
+            file:write("\n")
+            generateMethod(file, name, methodName, object.methods[methodName], level+2)
+        end
+    else
+        file:write("\n")
+        file:write("> This object has no methods.\n")
+    end
+
+    if object.extra then
+        file:write("\n")
+        file:write(heading(1).."Note:\n")
+        file:write(object.extra)
+    end
+end
+
+for peripheralName, peripheral in pairs(documentation.Peripherals) do
+    if peripheral.objects then
+        for objectName, object in pairs(peripheral.objects) do
+            print("Generating the "..peripheralName.."/"..objectName.." object")
+            local documentID = "peripheral_"..peripheralName:lower().."_"..objectName:lower()
+            local file = assert(io.open("docs/".. documentID ..".md", "w"))
+
+            file:write("---\n")
+            file:write("id: "..documentID.."\n")
+            file:write("title: "..peripheralName.."/"..objectName.."\n")
+            file:write("sidebar_label: "..peripheralName.."/"..objectName.."\n")
+            file:write("---\n")
+            file:write("\n")
+
+            generateObject(file, peripheralName, objectName, object, 1)
+
+            assert(file:close())
+        end
+    end
+end
+
 --== Updating the sidebar ==--
 
 ANSI.setGraphicsMode(0, 1, 34) --Blue output
