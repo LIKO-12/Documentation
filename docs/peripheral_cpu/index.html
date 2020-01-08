@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>CPU - Central Processing Unit · LIKO-12</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This peripheral contains most of miscellaneous functions that LIKO-12 would use."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="CPU - Central Processing Unit · LIKO-12"/><meta property="og:type" content="website"/><meta property="og:url" content="https://liko-12.github.io/WIP/"/><meta property="og:description" content="This peripheral contains most of miscellaneous functions that LIKO-12 would use."/><meta property="og:image" content="https://liko-12.github.io/WIP/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://liko-12.github.io/WIP/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/WIP/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://liko-12.github.io/WIP/blog/atom.xml" title="LIKO-12 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://liko-12.github.io/WIP/blog/feed.xml" title="LIKO-12 Blog RSS Feed"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/WIP/js/code-block-buttons.js"></script><script src="/WIP/js/scrollSpy.js"></script><link rel="stylesheet" href="/WIP/css/main.css"/><script src="/WIP/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/WIP/"><img class="logo" src="/WIP/img/headericon.png" alt="LIKO-12"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/WIP/docs/what_is_liko-12" target="_self">Docs</a></li><li class=""><a href="/WIP/help" target="_self">Help</a></li><li class=""><a href="/WIP/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Peripherals</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/what_is_liko-12">What is LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/how_to_install_liko-12">How to install LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/getting_started">Getting started</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/your_first_liko-12_program">Your first LIKO-12 program</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Peripherals</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_audio">Audio</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_bios">BIOS - Basic Integrated Operating System</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/WIP/docs/peripheral_cpu">CPU - Central Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_fdd">FDD - Floppy Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gamepad">Gamepad</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_gpu">GPU - Graphics Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_hdd">HDD - Hard Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_keyboard">Keyboard</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_ram">RAM - Random Access Memory</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_touchcontrols">TouchControls - The Touch Gamepad Input</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripheral_web">WEB</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/LIKO-12/WIP/edit/master/docs/peripheral_cpu.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">CPU - Central Processing Unit</h1></header><article><div><span><p>This peripheral contains most of miscellaneous functions that LIKO-12 would use.</p>
+<ul>
+<li><strong>Version:</strong> v1.0.0</li>
+<li><strong>Available since:</strong> LIKO-12 v0.6.0</li>
+<li><strong>Last updated in:</strong> LIKO-12 v0.8.0</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="methods"></a><a href="#methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods:</h2>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpuclearclipboard"></a><a href="#cpuclearclipboard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.clearClipboard</h3>
+<p>Clears the clipboard content.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.clearClipboard()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpuclearestack"></a><a href="#cpuclearestack" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.clearEStack</h3>
+<p>Clears the events stack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.clearEStack()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpuclipboard"></a><a href="#cpuclipboard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.clipboard</h3>
+<p>Read or write to/from the clipboard.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages"></a><a href="#usages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-read-the-clipboard-content"></a><a href="#1-read-the-clipboard-content" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Read the clipboard content:</h5>
+<pre><code class="hljs css language-lua">content = CPU.clipboard()
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="returns"></a><a href="#returns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h6>
+<ul>
+<li><strong>content (string):</strong> The clipboard content..</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-set-the-clipboard-content"></a><a href="#2-set-the-clipboard-content" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Set the clipboard content:</h5>
+<pre><code class="hljs css language-lua">CPU.clipboard(content)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments"></a><a href="#arguments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>content (string, number):</strong> The new clipboard content..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpucprint"></a><a href="#cpucprint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.cprint</h3>
+<p>Print into the developer terminal, that can be shown by running LIKO-12 from terminal.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.cprint(text, ...)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-1"></a><a href="#arguments-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>text (any):</strong> The text to print..</li>
+<li><strong>... (any) (Default:<code>nil</code>):</strong> Will be automatically concated with the first argument, works the same way of the standard Lua print..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpugetfps"></a><a href="#cpugetfps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.getFPS</h3>
+<p>Returns the current frame per second count.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">fps = CPU.getFPS()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-1"></a><a href="#returns-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>fps (number):</strong> The FPS..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpugethostos"></a><a href="#cpugethostos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.getHostOS</h3>
+<p>Returns the operating system that's LIKO-12 is running on.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua"><span class="hljs-built_in">os</span> = CPU.getHostOS()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-2"></a><a href="#returns-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>os (string):</strong> The current operating system. &quot;OS X&quot;, &quot;Windows&quot;, &quot;Linux&quot;, &quot;Android&quot; or &quot;iOS&quot;..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpugetsavedirectory"></a><a href="#cpugetsavedirectory" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.getSaveDirectory</h3>
+<p>Returns LIKO-12 save directory (the appdata directory) in the HOST filesystem.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">dir = CPU.getSaveDirectory()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-3"></a><a href="#returns-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>dir (string):</strong> LIKO-12 save directory (the appdata directory) in the HOST filesystem..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpuismobile"></a><a href="#cpuismobile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.isMobile</h3>
+<p>Returns true if LIKO-12 is running on a mobile device (Android or iOS).</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">mobile = CPU.isMobile()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-4"></a><a href="#returns-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>mobile (boolean):</strong> Is LIKO-12 running on a mobile device ?.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpuopenappdata"></a><a href="#cpuopenappdata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.openAppdata</h3>
+<p>Opens a specific directory inside the LIKO-12 appdata folder using the HOST file explorer.</p>
+<p>Opens a specific directory inside the LIKO-12 appdata folder using the HOST file explorer.</p>
+<p>In order to show a folder inside the virtual drives open <code>/drives/[driveName]/...</code>.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.openAppdata(dir)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-2"></a><a href="#arguments-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>dir (string):</strong> The directory to open in the HOST file explorer..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpupullevent"></a><a href="#cpupullevent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.pullEvent</h3>
+<p>Pulls an event from the events stack.</p>
+<p>Pulls an event from the events stack.</p>
+<p>This function is used internally by DiskOS to run the default event loop, which calls the callback functions that start by <code>_</code> like <code>_update</code> and <code>_mousepressed</code>, etc..</p>
+<p>Events in LIKO-12 may be pulled directly, or pulled from a stack if there are already, the stack may fill up when CPU <code>sleep()</code> or GPU <code>flip()</code> are called.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">event, a, b, c, d, e, f = CPU.pullEvent()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-5"></a><a href="#returns-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>event (string):</strong> The event name, can be any of the callbacks names without the &quot;_&quot; at the start..</li>
+<li><strong>a (any):</strong> First argument..</li>
+<li><strong>b (any):</strong> Second argument..</li>
+<li><strong>c (any):</strong> Third argument..</li>
+<li><strong>d (any):</strong> Forth argument..</li>
+<li><strong>e (any):</strong> Fifth argument..</li>
+<li><strong>f (any):</strong> Sixth argument..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpurawpullevent"></a><a href="#cpurawpullevent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.rawPullEvent</h3>
+<p>Pulls a new event directly, returns it and stores it in the events stack, used by DiskOS to handle the <code>escape</code> key.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">event, a, b, c, d, e, f = CPU.rawPullEvent()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-6"></a><a href="#returns-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>event (string):</strong> The event name, can be any of the callbacks names without the &quot;_&quot; at the start..</li>
+<li><strong>a (any):</strong> First argument..</li>
+<li><strong>b (any):</strong> Second argument..</li>
+<li><strong>c (any):</strong> Third argument..</li>
+<li><strong>d (any):</strong> Forth argument..</li>
+<li><strong>e (any):</strong> Fifth argument..</li>
+<li><strong>f (any):</strong> Sixth argument..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpureboot"></a><a href="#cpureboot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.reboot</h3>
+<p>Reboot LIKO-12.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-1"></a><a href="#usages-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-soft-reboot"></a><a href="#1-soft-reboot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Soft Reboot:</h5>
+<p>Soft reboots LIKO-12 by doing an internal trick to reload the BIOS and bootup again, will leave some garbage that will be cleaned automatically by the Lua garbage collector.</p>
+<pre><code class="hljs css language-lua">CPU.reboot()
+</code></pre>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-hard-reboot"></a><a href="#2-hard-reboot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Hard Reboot:</h5>
+<p>Hard reboots LIKO-12 by reinitializing the LÖVE engine, will clear the whole Lua state, and re-create the window.</p>
+<pre><code class="hljs css language-lua">CPU.reboot(<span class="hljs-literal">true</span>)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-3"></a><a href="#arguments-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong><code>true</code> (boolean)</strong></li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpushutdown"></a><a href="#cpushutdown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.shutdown</h3>
+<p>Shutdown/exit LIKO-12.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.shutdown()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cpusleep"></a><a href="#cpusleep" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.sleep</h3>
+<p>Sleeps (pauses) the current execution for specific amount of seconds.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.sleep(<span class="hljs-built_in">time</span>)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-4"></a><a href="#arguments-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>time (number):</strong> The amount of seconds to sleep..</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="cputriggerevent"></a><a href="#cputriggerevent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPU.triggerEvent</h3>
+<p>Add a new event to the events stack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>CPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">CPU.triggerEvent(event, a, b, c, d, e, f)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-5"></a><a href="#arguments-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>event (string):</strong> The event name..</li>
+<li><strong>a (any) (Default:<code>nil</code>):</strong> First argument..</li>
+<li><strong>b (any) (Default:<code>nil</code>):</strong> Second argument..</li>
+<li><strong>c (any) (Default:<code>nil</code>):</strong> Third argument..</li>
+<li><strong>d (any) (Default:<code>nil</code>):</strong> Forth argument..</li>
+<li><strong>e (any) (Default:<code>nil</code>):</strong> Fifth argument..</li>
+<li><strong>f (any) (Default:<code>nil</code>):</strong> Sixth argument..</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/WIP/docs/peripheral_bios"><span class="arrow-prev">← </span><span>BIOS - Basic Integrated Operating System</span></a><a class="docs-next button" href="/WIP/docs/peripheral_fdd"><span>FDD - Floppy Disk Drive</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#methods">Methods:</a><ul class="toc-headings"><li><a href="#cpuclearclipboard">CPU.clearClipboard</a></li><li><a href="#cpuclearestack">CPU.clearEStack</a></li><li><a href="#cpuclipboard">CPU.clipboard</a></li><li><a href="#cpucprint">CPU.cprint</a></li><li><a href="#cpugetfps">CPU.getFPS</a></li><li><a href="#cpugethostos">CPU.getHostOS</a></li><li><a href="#cpugetsavedirectory">CPU.getSaveDirectory</a></li><li><a href="#cpuismobile">CPU.isMobile</a></li><li><a href="#cpuopenappdata">CPU.openAppdata</a></li><li><a href="#cpupullevent">CPU.pullEvent</a></li><li><a href="#cpurawpullevent">CPU.rawPullEvent</a></li><li><a href="#cpureboot">CPU.reboot</a></li><li><a href="#cpushutdown">CPU.shutdown</a></li><li><a href="#cpusleep">CPU.sleep</a></li><li><a href="#cputriggerevent">CPU.triggerEvent</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/WIP/" class="nav-home"><img src="/WIP/img/favicon.ico" alt="LIKO-12"/></a><div><h5>Docs</h5><a href="/WIP/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/WIP/docs/en/doc2.html">Guides (or other categories)</a><a href="/WIP/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a><a href="https://twitter.com/ramilego4game" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/WIP/blog">Blog</a><a href="https://github.com/LIKO-12">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/LIKO-12/LIKO-12/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 The LIKO-12 Organization</section></footer></div></body></html>
