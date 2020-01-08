@@ -459,6 +459,8 @@ local sidebarFile = assert(io.open("website/sidebars.json", "r"))
 local sidebarData = assert(sidebarFile:read("*a"))
 assert(sidebarFile:close())
 
+local objectsList = {}
+
 local sidebar = JSON:decode(sidebarData)
 for peripheralName, peripheral in pairs(documentation.Peripherals) do
     --Only add the peripheral to the sidebar if it doesn't exist
@@ -476,8 +478,30 @@ for peripheralName, peripheral in pairs(documentation.Peripherals) do
     if not found then
         table.insert(sidebar.docs.Peripherals, documentID)
     end
+
+    if peripheral.objects then
+        for objectName, object in pairs(peripheral.objects) do
+            table.insert(objectsList, "peripheral_"..peripheralName:lower().."_"..objectName:lower())
+        end
+    end
 end
+
+for k, documentID in pairs(objectsList) do
+    local found = false
+    for k, v in pairs(sidebar.docs.Peripherals) do
+        if v == documentID then
+            found = true
+            break
+        end
+    end
+
+    if not found then
+        table.insert(sidebar.docs.Peripherals, documentID)
+    end
+end
+
 table.sort(sidebar.docs.Peripherals)
+table.sort(sidebar.docs.Objects)
 
 sidebarData = JSON:encode_pretty(sidebar, _, {
     pretty = true,
