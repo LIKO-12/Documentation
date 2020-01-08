@@ -346,6 +346,28 @@ local function generatePeripheral(file, name, peripheral, level)
         file:write("\n")
         file:write("> This peripheral has no methods.\n")
     end
+
+    if peripheral.objects then
+        file:write("\n")
+        file:write(heading(1).."Objects:\n")
+
+        --Sort the objects according to their names
+        local objectsList = {}
+        for objectName, object in pairs(peripheral.objects) do
+            table.insert(objectsList, objectName)
+        end
+        table.sort(objectsList)
+
+        for k, objectName in ipairs(objectsList) do
+            file:write("- ["..objectName.."](".."peripheral_"..name:lower().."_"..objectName:lower()..".md)")
+
+            if peripheral.objects[objectName].shortDescription then
+                file:write(" - "..peripheral.objects[objectName].shortDescription)
+            end
+
+            file:write("\n")
+        end
+    end
 end
 
 for peripheralName, peripheral in pairs(documentation.Peripherals) do
