@@ -438,8 +438,8 @@ for peripheralName, peripheral in pairs(documentation.Peripherals) do
 
             file:write("---\n")
             file:write("id: "..documentID.."\n")
-            file:write("title: "..peripheralName.."/"..objectName.."\n")
-            file:write("sidebar_label: "..peripheralName.."/"..objectName.."\n")
+            file:write("title: "..peripheralName.." - "..objectName.."\n")
+            file:write("sidebar_label: "..peripheralName.." / "..objectName.."\n")
             file:write("---\n")
             file:write("\n")
 
@@ -488,7 +488,7 @@ end
 
 for k, documentID in pairs(objectsList) do
     local found = false
-    for k, v in pairs(sidebar.docs.Peripherals) do
+    for k, v in pairs(sidebar.docs["Peripherals' Objects"]) do
         if v == documentID then
             found = true
             break
@@ -496,12 +496,12 @@ for k, documentID in pairs(objectsList) do
     end
 
     if not found then
-        table.insert(sidebar.docs.Peripherals, documentID)
+        table.insert(sidebar.docs["Peripherals' Objects"], documentID)
     end
 end
 
 table.sort(sidebar.docs.Peripherals)
-table.sort(sidebar.docs.Objects)
+table.sort(sidebar.docs["Peripherals' Objects"])
 
 sidebarData = JSON:encode_pretty(sidebar, _, {
     pretty = true,
