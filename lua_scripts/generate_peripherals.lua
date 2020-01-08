@@ -182,6 +182,13 @@ local function generateMethod(file, parentName, name, method, level)
     
                 for k, argument in ipairs(usage.arguments) do
                     file:write("* **")
+
+                    --TODO: Remove this debug
+                    if argument.default and argument.default ~= "false" and argument.default ~= "true" and argument.default ~= "nil" and not tonumber(argument.default) and argument.default:sub(1,1) ~= "\"" then
+                        ANSI.setGraphicsMode(0, 1, 33) --Orange output
+                        print("Improper default value in method", name, parentName)
+                        ANSI.setGraphicsMode(0, 1, 36) --Cyan output
+                    end
     
                     if argument.name then
                         file:write(argument.name.." ("..convertType(argument.type)..")")
@@ -249,6 +256,13 @@ local function generateMethod(file, parentName, name, method, level)
 
             for k, argument in ipairs(method.arguments) do
                 file:write("* **")
+
+                --TODO: Remove this debug
+                if argument.default and argument.default ~= "false" and argument.default ~= "true" and argument.default ~= "nil" and not tonumber(argument.default) and argument.default:sub(1,1) ~= "\"" then
+                    ANSI.setGraphicsMode(0, 1, 33) --Orange output
+                    print("Improper default value in method", name, parentName)
+                    ANSI.setGraphicsMode(0, 1, 36) --Cyan output
+                end
 
                 if argument.name then
                     file:write(argument.name.." ("..convertType(argument.type)..")")
