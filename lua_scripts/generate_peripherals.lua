@@ -191,13 +191,15 @@ local function generateMethod(file, parentName, name, method, level)
                     end
     
                     if argument.name then
-                        file:write(argument.name.." ("..convertType(argument.type)..")")
                         if argument.default then
+                            file:write("\\["..argument.name.."] ("..convertType(argument.type)..")")
                             file:write(" (Default:`"..argument.default.."`)")
+                        else
+                            file:write("\\<"..argument.name.."> ("..convertType(argument.type)..")")
                         end
     
                         if argument.description then
-                            file:write(":** "..argument.description..".\n")
+                            file:write(":** "..argument.description.."\n")
                         else
                             file:write("**\n")
                         end
@@ -216,7 +218,7 @@ local function generateMethod(file, parentName, name, method, level)
                     file:write("* **"..ret.name.." ("..convertType(ret.type)..")")
     
                     if ret.description then
-                        file:write(":** "..ret.description..".\n")
+                        file:write(":** "..ret.description.."\n")
                     else
                         file:write("**\n")
                     end
@@ -265,13 +267,15 @@ local function generateMethod(file, parentName, name, method, level)
                 end
 
                 if argument.name then
-                    file:write(argument.name.." ("..convertType(argument.type)..")")
                     if argument.default then
+                        file:write("["..argument.name.."] ("..convertType(argument.type)..")")
                         file:write(" (Default:`"..argument.default.."`)")
+                    else
+                        file:write("<"..argument.name.."> ("..convertType(argument.type)..")")
                     end
 
                     if argument.description then
-                        file:write(":** "..argument.description..".\n")
+                        file:write(":** "..argument.description.."\n")
                     else
                         file:write("**\n")
                     end
@@ -290,7 +294,7 @@ local function generateMethod(file, parentName, name, method, level)
                 file:write("* **"..ret.name.." ("..convertType(ret.type)..")")
 
                 if ret.description then
-                    file:write(":** "..ret.description..".\n")
+                    file:write(":** "..ret.description.."\n")
                 else
                     file:write("**\n")
                 end
