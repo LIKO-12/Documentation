@@ -9,8 +9,20 @@ jobs:
     name: Docusaurus
     runs-on: ubuntu-18.04
     steps:
+      - name: Update APT
+        run: sudo apt update
+      
+      - name: Install LuaJIT and LuaRocks
+        run: sudo apt install luajit luarocks
+
+      - name: Install required Lua modules
+        run: sudo luarocks install luafilesystem
+      
       - name: Git checkout
         uses: actions/checkout@v1
+
+      - name: Generate LIKO-12 documentation
+        run: luajit ./lua_scripts/generate_peripherals.lua
       
       - name: Setup Node.js
         uses: actions/setup-node@v1
