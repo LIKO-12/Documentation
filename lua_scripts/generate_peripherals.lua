@@ -81,6 +81,14 @@ local function convertType(atype)
             if type(stype) == "table" then --Complex type
                 --TODO: COMPLEX TYPE PROPER LINKING
                 ntable[k] = stype[#stype]
+
+                local documentID = ""
+                for i=1, #stype-2 do
+                    documentID = documentID..stype[i]:lower().."_"
+                end
+                documentID = documentID..stype[#stype]:lower()
+
+                ntable[k] = "["..stype[2].."."..stype[#stype].."]("..documentID..".md)"
             else
                 ntable[k] = stype
             end
@@ -359,7 +367,7 @@ local function generatePeripheral(file, name, peripheral, level)
         table.sort(objectsList)
 
         for k, objectName in ipairs(objectsList) do
-            file:write("- ["..objectName.."](".."peripheral_"..name:lower().."_"..objectName:lower()..".md)")
+            file:write("- ["..objectName.."](".."peripherals_"..name:lower().."_"..objectName:lower()..".md)")
 
             if peripheral.objects[objectName].shortDescription then
                 file:write(" - "..peripheral.objects[objectName].shortDescription)
