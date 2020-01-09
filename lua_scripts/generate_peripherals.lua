@@ -600,22 +600,22 @@ local function generateObject(file, parentName, name, object, level)
         file:write("---\n")
     end
 
-    if object.events then
+    if object.methods then
         file:write("\n")
-        file:write(heading(1).."Events:\n")
+        file:write(heading(1).."Methods:\n")
         
-        --Sort the events according to their names
-        local eventsList = {}
-        for methodName, method in pairs(object.events) do
-            table.insert(eventsList, methodName)
+        --Sort the methods according to their names
+        local methodsList = {}
+        for methodName, method in pairs(object.methods) do
+            table.insert(methodsList, methodName)
         end
-        table.sort(eventsList)
+        table.sort(methodsList)
 
-        for k, methodName in ipairs(eventsList) do
+        for k, methodName in ipairs(methodsList) do
             file:write("\n")
             file:write("---\n")
             file:write("\n")
-            generateMethod(file, name, methodName, object.events[methodName], level+2)
+            generateMethod(file, name, methodName, object.methods[methodName], level+2)
         end
     else
         file:write("\n")
