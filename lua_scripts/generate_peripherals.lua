@@ -126,7 +126,7 @@ local function generateMethod(file, parentName, name, method, level)
 
     if method.notes then
         for k, note in ipairs(method.notes) do
-            file:write("\n")
+            file:write("\n\n")
             file:write("> "..note:gsub("\n","\n> ").."\n")
         end
     end
@@ -159,7 +159,7 @@ local function generateMethod(file, parentName, name, method, level)
 
             if usage.notes then
                 for k, note in ipairs(usage.notes) do
-                    file:write("\n")
+                    file:write("\n\n")
                     file:write("> "..note:gsub("\n","\n> ").."\n")
                 end
             end
@@ -339,7 +339,7 @@ local function generateField(file, parentName, name, field, level)
     end
 
     file:write("\n")
-    file:write("* **Type:** "..convertType(field.type))
+    file:write("* **Type:** "..convertType(field.type).."\n")
     file:write("* **Available since:** _"..parentName..":_ v"..table.concat(field.availableSince[1], ".")..", _LIKO-12:_ v"..table.concat(field.availableSince[2], ".").."\n")
     file:write("* **Last updated in:** _"..parentName..":_ v"..table.concat(field.lastUpdatedIn[1], ".")..", _LIKO-12:_ v"..table.concat(field.lastUpdatedIn[2], ".").."\n")
 
@@ -350,7 +350,7 @@ local function generateField(file, parentName, name, field, level)
 
     if field.notes then
         for k, note in ipairs(field.notes) do
-            file:write("\n")
+            file:write("\n\n")
             file:write("> "..note:gsub("\n","\n> ").."\n")
         end
     end
@@ -389,7 +389,7 @@ local function generateEvent(file, parentName, name, event, level)
 
     if event.notes then
         for k, note in ipairs(event.notes) do
-            file:write("\n")
+            file:write("\n\n")
             file:write("> "..note:gsub("\n","\n> ").."\n")
         end
     end
@@ -567,7 +567,7 @@ local function generateObject(file, parentName, name, object, level)
 
     if object.notes then
         for k, note in ipairs(object.notes) do
-            file:write("\n")
+            file:write("\n\n")
             file:write("> "..note:gsub("\n","\n> ").."\n")
         end
     end
@@ -587,7 +587,7 @@ local function generateObject(file, parentName, name, object, level)
             file:write("\n")
             file:write("---\n")
             file:write("\n")
-            generateMethod(file, name, fieldName, object.fields[fieldName], level+2)
+            generateField(file, name, fieldName, object.fields[fieldName], level+2)
         end
 
         file:write("\n")
