@@ -380,7 +380,7 @@ end
 
 for peripheralName, peripheral in pairs(documentation.Peripherals) do
     print("Generating the "..peripheralName.." peripheral")
-    local documentID = "peripheral_"..peripheralName:lower()
+    local documentID = "peripherals_"..peripheralName:lower()
     local file = assert(io.open("docs/".. documentID ..".md", "w"))
 
     local title = peripheralName
@@ -463,7 +463,7 @@ for peripheralName, peripheral in pairs(documentation.Peripherals) do
     if peripheral.objects then
         for objectName, object in pairs(peripheral.objects) do
             print("Generating the "..peripheralName.."/"..objectName.." object")
-            local documentID = "peripheral_"..peripheralName:lower().."_"..objectName:lower()
+            local documentID = "peripherals_"..peripheralName:lower().."_"..objectName:lower()
             local file = assert(io.open("docs/".. documentID ..".md", "w"))
 
             file:write("---\n")
@@ -495,7 +495,7 @@ local sidebar = JSON:decode(sidebarData)
 for peripheralName, peripheral in pairs(documentation.Peripherals) do
     --Only add the peripheral to the sidebar if it doesn't exist
 
-    local documentID = "peripheral_"..peripheralName:lower()
+    local documentID = "peripherals_"..peripheralName:lower()
 
     local found = false
     for k, v in pairs(sidebar.docs.Peripherals) do
@@ -511,7 +511,7 @@ for peripheralName, peripheral in pairs(documentation.Peripherals) do
 
     if peripheral.objects then
         for objectName, object in pairs(peripheral.objects) do
-            table.insert(objectsList, "peripheral_"..peripheralName:lower().."_"..objectName:lower())
+            table.insert(objectsList, "peripherals_"..peripheralName:lower().."_"..objectName:lower())
         end
     end
 end
