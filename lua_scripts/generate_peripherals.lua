@@ -541,7 +541,7 @@ local function generateObject(file, parentName, name, object, level)
         end
     else
         file:write("\n")
-        file:write("> This object has no events.\n")
+        file:write("> This object has no methods.\n")
     end
 
     if object.extra then
