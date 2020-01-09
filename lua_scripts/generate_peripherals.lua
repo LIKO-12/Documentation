@@ -202,6 +202,8 @@ local function generateMethod(file, parentName, name, method, level)
                         if argument.default then
                             file:write("\\["..argument.name.."] ("..convertType(argument.type)..")")
                             file:write(" (Default:`"..argument.default.."`)")
+                        elseif argument.name == "..." then
+                            file:write("... ("..convertType(argument.type)..")")
                         else
                             file:write("\\<"..argument.name.."> ("..convertType(argument.type)..")")
                         end
@@ -278,6 +280,8 @@ local function generateMethod(file, parentName, name, method, level)
                     if argument.default then
                         file:write("["..argument.name.."] ("..convertType(argument.type)..")")
                         file:write(" (Default:`"..argument.default.."`)")
+                    elseif argument.name == "..." then
+                        file:write("... ("..convertType(argument.type)..")")
                     else
                         file:write("\\<"..argument.name.."> ("..convertType(argument.type)..")")
                     end
