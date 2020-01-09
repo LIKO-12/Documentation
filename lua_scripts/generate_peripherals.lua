@@ -317,6 +317,51 @@ local function generateMethod(file, parentName, name, method, level)
     end
 end
 
+--Gemerates lines of markdown documenting the provided field
+local function generateField(file, parentName, name, field, level)
+    level = level or 1 --Root heading level
+
+    local function heading(sublevel)
+        return string.rep("#", level+sublevel).." "
+    end
+
+    file:write("\n")
+    file:write(heading(0)..parentName.."."..name)
+
+    if field.shortDescription then
+        file:write("\n")
+        file:write(field.shortDescription.."\n")
+    end
+
+    if field.longDescription then
+        file:write("\n")
+        file:write(field.longDescription.."\n")
+    end
+
+    file:write("\n")
+    file:write("* **Type:** "..convertType(field.type))
+    file:write("* **Available since:** _"..parentName..":_ v"..table.concat(field.availableSince[1], ".")..", _LIKO-12:_ v"..table.concat(field.availableSince[2], ".").."\n")
+    file:write("* **Last updated in:** _"..parentName..":_ v"..table.concat(field.lastUpdatedIn[1], ".")..", _LIKO-12:_ v"..table.concat(field.lastUpdatedIn[2], ".").."\n")
+
+    if field.protected then
+        file:write("\n")
+        file:write("> The field is protected from writing on (attempting so would raise an error!).")
+    end
+
+    if field.notes then
+        for k, note in ipairs(field.notes) do
+            file:write("\n")
+            file:write("> "..note:gsub("\n","\n> ").."\n")
+        end
+    end
+
+    if field.extra then
+        file:write("\n")
+        file:write(heading(1).."Note:\n")
+        file:write(field.extra)
+    end
+end
+
 --Generates lines of markdown documenting the provided event
 local function generateEvent(file, parentName, name, event, level)
     level = level or 1 --Root heading level
@@ -420,7 +465,7 @@ local function generatePeripheral(file, name, peripheral, level)
         end
     else
         file:write("\n")
-        file:write("> This peripheral has no methods.\n")
+        file:write("> The peripheral has no methods.\n")
     end
 
     if peripheral.events then
@@ -444,6 +489,11 @@ local function generatePeripheral(file, name, peripheral, level)
             file:write("---\n")
             file:write("\n")
             generateEvent(file, name, eventName, peripheral.events[eventName], level+2)
+        end
+
+        if peripheral.objects then
+            file:write("\n")
+            file:write("---\n")
         end
     end
 
@@ -522,9 +572,31 @@ local function generateObject(file, parentName, name, object, level)
         end
     end
 
+    if object.fields then
+        file:write("\n")
+        file:write(heading(1).."Fields:\n")
+        
+        --Sort the fields according to their names
+        local fieldsList = {}
+        for fieldName, method in pairs(object.fields) do
+            table.insert(fieldsList, fieldName)
+        end
+        table.sort(fieldsList)
+
+        for k, fieldName in ipairs(fieldsList) do
+            file:write("\n")
+            file:write("---\n")
+            file:write("\n")
+            generateMethod(file, name, fieldName, object.fields[fieldName], level+2)
+        end
+
+        file:write("\n")
+        file:write("---\n")
+    end
+
     if object.events then
         file:write("\n")
-        file:write(heading(1).."events:\n")
+        file:write(heading(1).."Events:\n")
         
         --Sort the events according to their names
         local eventsList = {}
@@ -541,7 +613,7 @@ local function generateObject(file, parentName, name, object, level)
         end
     else
         file:write("\n")
-        file:write("> This object has no methods.\n")
+        file:write("> The object has no methods.\n")
     end
 
     if object.extra then
