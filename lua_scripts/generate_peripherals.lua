@@ -88,7 +88,7 @@ local function convertType(atype)
                 end
                 documentID = documentID..stype[#stype]:lower()
 
-                ntable[k] = "["..stype[2].."."..stype[#stype].."]("..documentID..".md)"
+                ntable[k] = "["..stype[2].."/"..stype[#stype].."]("..documentID..".md)"
             else
                 ntable[k] = stype
             end
