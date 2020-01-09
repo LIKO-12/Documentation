@@ -474,6 +474,8 @@ local function generatePeripheral(file, name, peripheral, level)
 
     if peripheral.events then
         file:write("\n")
+        file:write("---\n")
+        file:write("\n")
         file:write(heading(1).."Events:\n")
 
         file:write("\n")
