@@ -317,6 +317,74 @@ local function generateMethod(file, parentName, name, method, level)
     end
 end
 
+--Generates lines of markdown documenting the provided event
+local function generateEvent(file, parentName, name, event, level)
+    level = level or 1 --Root heading level
+
+    local function heading(sublevel)
+        return string.rep("#", level+sublevel).." "
+    end
+
+    file:write("\n")
+    file:write(heading(0).."`"..name.."`")
+
+    if event.shortDescription then
+        file:write("\n")
+        file:write(event.shortDescription.."\n")
+    end
+
+    if event.longDescription then
+        file:write("\n")
+        file:write(event.longDescription.."\n")
+    end
+
+    file:write("\n")
+    file:write("* **Available since:** _"..parentName..":_ v"..table.concat(event.availableSince[1], ".")..", _LIKO-12:_ v"..table.concat(event.availableSince[2], ".").."\n")
+    file:write("* **Last updated in:** _"..parentName..":_ v"..table.concat(event.lastUpdatedIn[1], ".")..", _LIKO-12:_ v"..table.concat(event.lastUpdatedIn[2], ".").."\n")
+
+    if event.notes then
+        for k, note in ipairs(event.notes) do
+            file:write("\n")
+            file:write("> "..note:gsub("\n","\n> ").."\n")
+        end
+    end
+
+    file:write("```lua\n")
+    file:write("function _"..name.."(")
+    if event.arguments then
+        for k, argument in ipairs(event.arguments) do
+            if k ~= 1 then file:write(", ") end
+            file:write(argument.name)
+        end
+    end
+    file:write(")\n")
+    file:write("\t--Content run when the event is triggered\n")
+    file:write("end\n")
+    file:write("```\n")
+
+    if event.arguments then
+        file:write("\n")
+        file:write(heading(1).."Arguments:\n")
+        file:write("\n")
+
+        for k, argument in ipairs(event.arguments) do
+            file:write("* **"..argument.name.." ("..convertType(argument.type)..")")
+
+            if argument.description then
+                file:write(":** "..argument.description.."\n")
+            else
+                file:write("**\n")
+            end
+        end
+    end
+
+    if event.extra then
+        file:write("\n")
+        file:write(heading(1).."Note:\n")
+        file:write(event.extra)
+    end
+end
+
 --Generates lines of markdown documenting the provided peripheral
 local function generatePeripheral(file, name, peripheral, level)
     level = level or 1 --Root heading level
@@ -353,6 +421,30 @@ local function generatePeripheral(file, name, peripheral, level)
     else
         file:write("\n")
         file:write("> This peripheral has no methods.\n")
+    end
+
+    if peripheral.events then
+        file:write("\n")
+        file:write(heading(1).."Events:\n")
+
+        file:write("\n")
+        file:write("> Please note that the example functions won't be called automatically,\n")
+        file:write("> there must be some kind of an events handler for [CPU.pullEvent](peripherals_cpu.md#cpupullevent),\n")
+        file:write("> check if the LIKO-12 OS you're using has one.\n")
+
+        --Sort the events according to their names
+        local eventsList = {}
+        for eventName, event in pairs(peripheral.events) do
+            table.insert(eventsList, eventName)
+        end
+        table.sort(eventsList)
+
+        for k, eventName in ipairs(eventsList) do
+            file:write("\n")
+            file:write("---\n")
+            file:write("\n")
+            generateEvent(file, name, eventName, peripheral.events[eventName], level+2)
+        end
     end
 
     if peripheral.objects then
@@ -430,26 +522,26 @@ local function generateObject(file, parentName, name, object, level)
         end
     end
 
-    if object.methods then
+    if object.events then
         file:write("\n")
-        file:write(heading(1).."Methods:\n")
+        file:write(heading(1).."events:\n")
         
-        --Sort the methods according to their names
-        local methodsList = {}
-        for methodName, method in pairs(object.methods) do
-            table.insert(methodsList, methodName)
+        --Sort the events according to their names
+        local eventsList = {}
+        for methodName, method in pairs(object.events) do
+            table.insert(eventsList, methodName)
         end
-        table.sort(methodsList)
+        table.sort(eventsList)
 
-        for k, methodName in ipairs(methodsList) do
+        for k, methodName in ipairs(eventsList) do
             file:write("\n")
             file:write("---\n")
             file:write("\n")
-            generateMethod(file, name, methodName, object.methods[methodName], level+2)
+            generateMethod(file, name, methodName, object.events[methodName], level+2)
         end
     else
         file:write("\n")
-        file:write("> This object has no methods.\n")
+        file:write("> This object has no events.\n")
     end
 
     if object.extra then
