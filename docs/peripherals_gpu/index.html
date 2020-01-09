@@ -1,0 +1,996 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>GPU - Graphics Processing Unit · LIKO-12</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="It&#x27;s the strongest peripheral in LIKO-12, it&#x27;s responsible for creating the window and doing all the drawing operations."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="GPU - Graphics Processing Unit · LIKO-12"/><meta property="og:type" content="website"/><meta property="og:url" content="https://liko-12.github.io/WIP/"/><meta property="og:description" content="It&#x27;s the strongest peripheral in LIKO-12, it&#x27;s responsible for creating the window and doing all the drawing operations."/><meta property="og:image" content="https://liko-12.github.io/WIP/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://liko-12.github.io/WIP/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/WIP/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://liko-12.github.io/WIP/blog/atom.xml" title="LIKO-12 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://liko-12.github.io/WIP/blog/feed.xml" title="LIKO-12 Blog RSS Feed"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/WIP/js/code-block-buttons.js"></script><script src="/WIP/js/scrollSpy.js"></script><link rel="stylesheet" href="/WIP/css/main.css"/><script src="/WIP/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/WIP/"><img class="logo" src="/WIP/img/headericon.png" alt="LIKO-12"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/WIP/docs/what_is_liko-12" target="_self">Docs</a></li><li class=""><a href="/WIP/help" target="_self">Help</a></li><li class=""><a href="/WIP/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Peripherals</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/what_is_liko-12">What is LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/how_to_install_liko-12">How to install LIKO-12</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/getting_started">Getting started</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/your_first_liko-12_program">Your first LIKO-12 program</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Peripherals</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_audio">Audio</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_bios">BIOS - Basic Integrated Operating System</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_cpu">CPU - Central Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_fdd">FDD - Floppy Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gamepad">Gamepad</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/WIP/docs/peripherals_gpu">GPU - Graphics Processing Unit</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_hdd">HDD - Hard Disk Drive</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_keyboard">Keyboard</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_ram">RAM - Random Access Memory</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_touchcontrols">TouchControls - The Touch Gamepad Input</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_web">WEB</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Peripherals&#x27; Objects</h3><ul class=""><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gpu_fontdata">GPU / fontData</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gpu_image">GPU / image</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gpu_imagedata">GPU / imageData</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gpu_quad">GPU / quad</a></li><li class="navListItem"><a class="navItem" href="/WIP/docs/peripherals_gpu_spritebatch">GPU / spriteBatch</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/LIKO-12/WIP/edit/master/docs/peripherals_gpu.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">GPU - Graphics Processing Unit</h1></header><article><div><span><p>It's the strongest peripheral in LIKO-12, it's responsible for creating the window and doing all the drawing operations.</p>
+<ul>
+<li><strong>Version:</strong> v1.0.0</li>
+<li><strong>Available since:</strong> LIKO-12 v0.6.0</li>
+<li><strong>Last updated in:</strong> LIKO-12 v0.8.0</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="methods"></a><a href="#methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods:</h2>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpu_systemmessage"></a><a href="#gpu_systemmessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU._systemMessage</h3>
+<p>Shows a system message: A single line message at the bottom of the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU._systemMessage(msg, <span class="hljs-built_in">time</span>, tColor, bgColor)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments"></a><a href="#arguments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;msg&gt; (string):</strong> The message to show.</li>
+<li><strong>[time] (number) (Default:<code>1</code>):</strong> How long the message to be shown, (in seconds).</li>
+<li><strong>[tColor] (number) (Default:<code>4</code>):</strong> The color of the text (0-15).</li>
+<li><strong>[bgColor] (number) (Default:<code>9</code>):</strong> The color of the background (0-15).</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpucam"></a><a href="#gpucam" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.cam</h3>
+<p>Transforms the drawing operations.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The transforming operations sums up, to reset check the fifth usage of this function.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="usages"></a><a href="#usages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-translate-drawing-positions"></a><a href="#1-translate-drawing-positions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Translate drawing positions:</h5>
+<p>Shifts all drawing operations.</p>
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"translate"</span>, x, y)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-1"></a><a href="#arguments-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong><code>&quot;translate&quot;</code> (string)</strong></li>
+<li><strong>&lt;x&gt; (number):</strong> The translation relative to the x-axis.</li>
+<li><strong>&lt;y&gt; (number):</strong> The translation relative to the y-axis.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-scale-drawing-operations"></a><a href="#2-scale-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Scale drawing operations:</h5>
+<p>Scales all the drawing operations.</p>
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"scale"</span>, sx, sy)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-2"></a><a href="#arguments-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong><code>&quot;scale&quot;</code> (string)</strong></li>
+<li><strong>&lt;sx&gt; (number):</strong> The scaling in the direction of the x-axis.</li>
+<li><strong>&lt;sy&gt; (number):</strong> The scaling in the direction of the y-axis.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="3-rotate-drawing-operations"></a><a href="#3-rotate-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Rotate drawing operations:</h5>
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"rotate"</span>, a)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-3"></a><a href="#arguments-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong><code>&quot;rotate&quot;</code> (string)</strong></li>
+<li><strong>&lt;a&gt; (number):</strong> The amount to rotate the coordinate system in radians.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="4-shear-drawing-operations"></a><a href="#4-shear-drawing-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Shear drawing operations:</h5>
+<pre><code class="hljs css language-lua">GPU.cam(<span class="hljs-string">"shear"</span>, x, y)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-4"></a><a href="#arguments-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong><code>&quot;shear&quot;</code> (string)</strong></li>
+<li><strong>&lt;x&gt; (number):</strong> The shear factor on the x-axis.</li>
+<li><strong>&lt;y&gt; (number):</strong> The shear factor on the y-axis.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="5-reset-all-the-tranformations"></a><a href="#5-reset-all-the-tranformations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Reset all the tranformations:</h5>
+<p>Resets all the tranformations done back to their original state.</p>
+<pre><code class="hljs css language-lua">GPU.cam()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpucircle"></a><a href="#gpucircle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.circle</h3>
+<p>Draws a circle on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The arguments can be passed in a table.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">GPU.circle(x, y, r, l, c, seg)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-5"></a><a href="#arguments-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The x coord of circle center.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y coord of circle center.</li>
+<li><strong>&lt;r&gt; (number):</strong> The radius of circle.</li>
+<li><strong>&lt;l&gt; (boolean):</strong> (false/nil) The circle will be filled, (true) The circle will have only lines (outline).</li>
+<li><strong>&lt;c&gt; (number):</strong> The color of the circle (0-15), defaults to the active color.</li>
+<li><strong>&lt;seg&gt; (number):</strong> The number of the segments used when drawing the circle.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuclear"></a><a href="#gpuclear" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.clear</h3>
+<p>Clears the screen and fills it with a specific color, useful when clearing the screen for a new frame.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.clear(id)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-6"></a><a href="#arguments-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>[id] (number) (Default:<code>0</code>):</strong> The ID of the color to fill the screen with, can be 0-15.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuclearmatrixstack"></a><a href="#gpuclearmatrixstack" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.clearMatrixStack</h3>
+<p>Clears the matrix stack (By calling <code>popMatrix()</code>).</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.clearMatrixStack()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuclip"></a><a href="#gpuclip" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.clip</h3>
+<p>Sets the region that the GPU can draw on.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-1"></a><a href="#usages-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-enable-clipping"></a><a href="#1-enable-clipping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Enable clipping:</h5>
+<blockquote>
+<p>The arguments can be passed in a table.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">GPU.clip(x, y, w, h)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-7"></a><a href="#arguments-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The top-left X coord of the clipping area.</li>
+<li><strong>&lt;y&gt; (number):</strong> The top-left Y coord of the clipping area.</li>
+<li><strong>&lt;w&gt; (number):</strong> The width of the clipping area.</li>
+<li><strong>&lt;h&gt; (number):</strong> The height of the clipping area.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-disable-clipping"></a><a href="#2-disable-clipping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Disable clipping:</h5>
+<pre><code class="hljs css language-lua">GPU.clip()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpucolor"></a><a href="#gpucolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.color</h3>
+<p>Set's the current active color.</p>
+<p>Set's the current active color.</p>
+<hr>
+<p><img src="_media/Palette.png" alt="Palette"></p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-2"></a><a href="#usages-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-set-the-current-active-color"></a><a href="#1-set-the-current-active-color" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Set the current active color:</h5>
+<pre><code class="hljs css language-lua">GPU.color(id)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-8"></a><a href="#arguments-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;id&gt; (number):</strong> The new active color id (0-15).</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-get-the-current-active-color"></a><a href="#2-get-the-current-active-color" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Get the current active color:</h5>
+<pre><code class="hljs css language-lua">id = GPU.color()
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="returns"></a><a href="#returns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h6>
+<ul>
+<li><strong>id (number):</strong> The current active color id (0-15).</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpucolorpalette"></a><a href="#gpucolorpalette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.colorPalette</h3>
+<p>Allows you to read and modify the real RGBA values of a color in the palette.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-3"></a><a href="#usages-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-read-the-rgb-values-of-a-color"></a><a href="#1-read-the-rgb-values-of-a-color" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Read the RGB values of a color:</h5>
+<pre><code class="hljs css language-lua">r, g, b = GPU.colorPalette(id)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-9"></a><a href="#arguments-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;id&gt; (number):</strong> The color id.</li>
+</ul>
+<h6><a class="anchor" aria-hidden="true" id="returns-1"></a><a href="#returns-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h6>
+<ul>
+<li><strong>r (number):</strong> The channel red value [0-225]</li>
+<li><strong>g (number):</strong> The channel green value [0-225]</li>
+<li><strong>b (number):</strong> The channel blue value [0-225]</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-set-the-rgb-values-of-a-color"></a><a href="#2-set-the-rgb-values-of-a-color" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Set the RGB values of a color:</h5>
+<pre><code class="hljs css language-lua">GPU.colorPalette(id, r, g, b)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-10"></a><a href="#arguments-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;id&gt; (number):</strong> The color id.</li>
+<li><strong>&lt;r&gt; (number):</strong> The channel red value [0-225]</li>
+<li><strong>&lt;g&gt; (number):</strong> The channel green value [0-225]</li>
+<li><strong>&lt;b&gt; (number):</strong> The channel blue value [0-225]</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="3-reset-the-palette-colors-to-their-defaults-pico-8-palette"></a><a href="#3-reset-the-palette-colors-to-their-defaults-pico-8-palette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Reset the palette colors to their defaults (PICO-8 Palette):</h5>
+<pre><code class="hljs css language-lua">GPU.colorPalette()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpucursor"></a><a href="#gpucursor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.cursor</h3>
+<p>Sets the current active mouse cursor, or creates a new one.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-4"></a><a href="#usages-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-set-the-current-mouse-cursor"></a><a href="#1-set-the-current-mouse-cursor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Set the current mouse cursor:</h5>
+<pre><code class="hljs css language-lua">GPU.cursor(name, grap)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-11"></a><a href="#arguments-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;name&gt; (string):</strong> The name of the cursor.</li>
+<li><strong>[grap] (boolean) (Default:<code>false</code>):</strong> True -&gt; Grap the cursor to the pixelated screen.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-get-the-current-mouse-cursor"></a><a href="#2-get-the-current-mouse-cursor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Get the current mouse cursor:</h5>
+<pre><code class="hljs css language-lua">current = GPU.cursor()
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="returns-2"></a><a href="#returns-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h6>
+<ul>
+<li><strong>current (string):</strong> The current active cursor name.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="3-create-a-new-cursor"></a><a href="#3-create-a-new-cursor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Create a new cursor:</h5>
+<pre><code class="hljs css language-lua">GPU.cursor(imgdata, name, hx, hy)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-12"></a><a href="#arguments-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;imgdata&gt; (<a href="/WIP/docs/peripherals_gpu_imagedata">GPU.imageData</a>):</strong> The imagedata of the cursor.</li>
+<li><strong>[name] (string) (Default:<code>&quot;default&quot;</code>):</strong> The name of the cursor.</li>
+<li><strong>[hx] (number) (Default:<code>0</code>):</strong> The X coord of the cursor hot position.</li>
+<li><strong>[hy] (number) (Default:<code>0</code>):</strong> The Y coord of the cursor hot position.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuellipse"></a><a href="#gpuellipse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.ellipse</h3>
+<p>Draws an ellipse on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The arguments can be passed in a table</p>
+</blockquote>
+<pre><code class="hljs css language-lua">GPU.ellipse(x, y, rx, ry, l, r, seg)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-13"></a><a href="#arguments-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The x coord of ellipse center.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y coord of ellipse center.</li>
+<li><strong>&lt;rx&gt; (number):</strong> The radius of the ellipse along the x-axis (half the ellipse's width).</li>
+<li><strong>&lt;ry&gt; (number):</strong> The radius of the ellipse along the y-axis (half the ellipse's height).</li>
+<li><strong>[l] (boolean) (Default:<code>false</code>):</strong> (false/nil) The ellipse will be filled, (true) The ellipse will have only lines (outline).</li>
+<li><strong>&lt;r&gt; (number):</strong> The color of the ellipse (0-15), defaults to the active color.</li>
+<li><strong>&lt;seg&gt; (number):</strong> The number of the segments used when drawing the ellipse.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuendgifrecording"></a><a href="#gpuendgifrecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.endGifRecording</h3>
+<p>End LIKO-12 screen Gif recording by code.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.endGifRecording()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuflip"></a><a href="#gpuflip" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.flip</h3>
+<p>Waits till the screen is applied and shown to the user, helpful when doing some loading operations.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.flip()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpufontheight"></a><a href="#gpufontheight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.fontHeight</h3>
+<p>Returns height of the font character in pixels.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">height = GPU.fontHeight()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-3"></a><a href="#returns-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>height (number):</strong> The height of the font character.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpufontsize"></a><a href="#gpufontsize" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.fontSize</h3>
+<p>Returns size of the font character in pixels.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">height, width = GPU.fontSize()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-4"></a><a href="#returns-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>height (number):</strong> The height of the font character.</li>
+<li><strong>width (number):</strong> The width of the font character.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpufontwidth"></a><a href="#gpufontwidth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.fontWidth</h3>
+<p>Returns width of the font character in pixels.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">width = GPU.fontWidth()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-5"></a><a href="#returns-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>width (number):</strong> The width of the font character.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpugetlabelimage"></a><a href="#gpugetlabelimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.getLabelImage</h3>
+<p>Returns the imagedata object of LabelImage, which can be capture by pressing F6, It will automatically update to the latest capture.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">limg = GPU.getLabelImage()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-6"></a><a href="#returns-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>limg (<a href="/WIP/docs/peripherals_gpu_imagedata">GPU.imageData</a>):</strong> The imagedata object of the label.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpugetmpos"></a><a href="#gpugetmpos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.getMPos</h3>
+<p>Gets position of the mouse.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">mx, my = GPU.getMPos()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-7"></a><a href="#returns-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>mx (number):</strong> The x position of the mouse.</li>
+<li><strong>my (number):</strong> The y position of the mouse.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuimage"></a><a href="#gpuimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.image</h3>
+<p>Creats a new image that can be used for drawing.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">img = GPU.image(data)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-14"></a><a href="#arguments-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;data&gt; (string):</strong> The image data, must be in Image format.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-8"></a><a href="#returns-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>img (<a href="/WIP/docs/peripherals_gpu_image">GPU.image</a>):</strong> The created image object.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuimagedata"></a><a href="#gpuimagedata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.imagedata</h3>
+<p>Creates a new imagedata object, which can be used for images processing (Set pixels, Get Pixels, encode, export, etc...).</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>All transparent pixels and all colors that are not from the palette will be loaded as black!</p>
+</blockquote>
+<pre><code class="hljs css language-lua">imgdata = GPU.imagedata(data)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-15"></a><a href="#arguments-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;data&gt; (string):</strong> The image data, (png binary string or in lk12 format)</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-9"></a><a href="#returns-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>imgdata (<a href="/WIP/docs/peripherals_gpu_imagedata">GPU.imageData</a>):</strong> The created imagedata object.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuisgifrecording"></a><a href="#gpuisgifrecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.isGifRecording</h3>
+<p>Tells if the GPU is recording the screen or not.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">recording = GPU.isGifRecording()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-10"></a><a href="#returns-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>recording (boolean):</strong> Is the GPU recording the screen or not.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuismdown"></a><a href="#gpuismdown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.isMDown</h3>
+<p>Checks if a mouse button is down.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">bool = GPU.isMDown(button)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-16"></a><a href="#arguments-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;button&gt; (number):</strong>  The button to check, 1 for left mouse button, 2 for right mouse button, 3 for middle mouse button.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-11"></a><a href="#returns-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>bool (boolean):</strong> True if mouse button is down, false if not.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuline"></a><a href="#gpuline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.line</h3>
+<p>Draws line(s) on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.line(x1, y1, x2, y2, ..., color)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-17"></a><a href="#arguments-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x1&gt; (number):</strong> The x position of the first end of the line.</li>
+<li><strong>&lt;y1&gt; (number):</strong> The y position of the first end of the line.</li>
+<li><strong>&lt;x2&gt; (number):</strong> The x position of the second end of the line.</li>
+<li><strong>&lt;y2&gt; (number):</strong> The y position of the second end of the line.</li>
+<li><strong>&lt;...&gt; (number):</strong> Any other lines to draw at the same time.</li>
+<li><strong>&lt;color&gt; (number):</strong> The color of the line(s) (0-15), defaults to the active color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupal"></a><a href="#gpupal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.pal</h3>
+<p>Maps a color in the palette to another color.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>There are 2 palettes in LIKO-12: The Images palette which affects images only. And the Drawing palette which affects all other GPU functions.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="usages-5"></a><a href="#usages-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-reset-the-whole-palette"></a><a href="#1-reset-the-whole-palette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Reset the whole palette.</h5>
+<pre><code class="hljs css language-lua">GPU.pal(A, B, palette)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-18"></a><a href="#arguments-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;A&gt; (boolean, number):</strong> The color to replace, or false for all</li>
+<li><strong>&lt;B&gt; (number):</strong> The color which will replace A</li>
+<li><strong>&lt;palette&gt; (number, boolean):</strong> (0) will reset the color in the Drawing palette only, (1) will reset the color in the Images palette only, (nil/false) will reset the color in both palettes.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-reset-a-specific-color-to-its-default"></a><a href="#2-reset-a-specific-color-to-its-default" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Reset a specific color to it's default.</h5>
+<pre><code class="hljs css language-lua">GPU.pal(color, <span class="hljs-literal">false</span>, p)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-19"></a><a href="#arguments-19" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;color&gt; (number):</strong> The color to reset to it's default.</li>
+<li><strong>&lt;false&gt; (boolean):</strong> literal</li>
+<li><strong>&lt;p&gt; (number, boolean):</strong> (0) will reset the color in the Drawing palette only, (1) will reset the color in the Images palette only, (nil/false) will reset the color in both palettes.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupalt"></a><a href="#gpupalt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.palt</h3>
+<p>Makes a specific color transparent or not, by default the color 0 is transparent.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>This only affects images.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="usages-6"></a><a href="#usages-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1--make-a-specific-color-transparent-or-not"></a><a href="#1--make-a-specific-color-transparent-or-not" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.  Make a specific color transparent or not.</h5>
+<pre><code class="hljs css language-lua">GPU.palt(color, transparent)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-20"></a><a href="#arguments-20" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;color&gt; (number):</strong> The color id (0-15).</li>
+<li><strong>[transparent] (boolean) (Default:<code>nil</code>):</strong> (true) The color will be transparent, (false/nil) The color will be opaque.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-reset-the-colors-to-its-default"></a><a href="#2-reset-the-colors-to-its-default" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Reset the colors to it's default.</h5>
+<pre><code class="hljs css language-lua">GPU.palt()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupausegifrecording"></a><a href="#gpupausegifrecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.pauseGifRecording</h3>
+<p>Pause LIKO-12 screen Gif recording by code.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.pauseGifRecording()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupoint"></a><a href="#gpupoint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.point</h3>
+<p>Draws point(s) on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.point(x, y, ..., color)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-21"></a><a href="#arguments-21" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The x position of the point.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y position of the point.</li>
+<li><strong>&lt;...&gt; (number):</strong> Any other points to draw at the same time.</li>
+<li><strong>&lt;color&gt; (number):</strong> The color of the point(s) (0-15), defaults to the active color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupolygon"></a><a href="#gpupolygon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.polygon</h3>
+<p>Draws a polygon on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.polygon(x1, y1, x2, y2, x3, y3, ..., color)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-22"></a><a href="#arguments-22" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x1&gt; (number):</strong> The x position of the first vertex of the polygon.</li>
+<li><strong>&lt;y1&gt; (number):</strong> The y position of the first vertex of the polygon.</li>
+<li><strong>&lt;x2&gt; (number):</strong> The x position of the second vertex of the polygon.</li>
+<li><strong>&lt;y2&gt; (number):</strong> The y position of the second vertex of the polygon.</li>
+<li><strong>&lt;x3&gt; (number):</strong> The x position of the third vertex of the polygon.</li>
+<li><strong>&lt;y3&gt; (number):</strong> The y position of the third vertex of the polygon.</li>
+<li><strong>&lt;...&gt; (number):</strong> Any other vertices of the polygon.</li>
+<li><strong>&lt;color&gt; (number):</strong> The color of the polygon (0-15), defaults to the active color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupopcolor"></a><a href="#gpupopcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.popColor</h3>
+<p>Pops the last active color from the ColorStack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.popColor()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupopmatrix"></a><a href="#gpupopmatrix" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.popMatrix</h3>
+<p>Pops the last cam transformations from the MatrixStack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.popMatrix()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupoppalette"></a><a href="#gpupoppalette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.popPalette</h3>
+<p>Pop the last color mapping and transparent colors list from the palettes stack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.popPalette()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuprint"></a><a href="#gpuprint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.print</h3>
+<p>Prints text to the screen, uses the current active color.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-7"></a><a href="#usages-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-print-at-a-specific-position-on-the-screen-with-wrapping-mode"></a><a href="#1-print-at-a-specific-position-on-the-screen-with-wrapping-mode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Print at a specific position on the screen with wrapping mode</h5>
+<pre><code class="hljs css language-lua">GPU.<span class="hljs-built_in">print</span>(text, x, y, limit, align, r, sx, sy, ox, oy, kx, ky)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-23"></a><a href="#arguments-23" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text to draw.</li>
+<li><strong>&lt;x&gt; (number):</strong> The X coord to draw at.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y coord to draw at.</li>
+<li><strong>&lt;limit&gt; (number):</strong> Wrap the line after this many horizontal pixels.</li>
+<li><strong>[align] (string) (Default:<code>&quot;left&quot;</code>):</strong> The text alignment (can be &quot;left&quot;, &quot;center&quot; and &quot;right&quot;).</li>
+<li><strong>[r] (number) (Default:<code>0</code>):</strong> Rotation (radians).</li>
+<li><strong>[sx] (number) (Default:<code>1</code>):</strong> Scale factor (x-axis).</li>
+<li><strong>[sy] (number) (Default:<code>sx</code>):</strong> Scale factor (y-axis).</li>
+<li><strong>[ox] (number) (Default:<code>0</code>):</strong> Origin offset (x-axis).</li>
+<li><strong>[oy] (number) (Default:<code>0</code>):</strong> Origin offset (y-axis).</li>
+<li><strong>[kx] (number) (Default:<code>0</code>):</strong> Shear factor (x-axis).</li>
+<li><strong>[ky] (number) (Default:<code>0</code>):</strong> Shear factor (y-axis).</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-print-at-a-specific-position-on-the-screen-without-wrapping"></a><a href="#2-print-at-a-specific-position-on-the-screen-without-wrapping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Print at a specific position on the screen without wrapping.</h5>
+<pre><code class="hljs css language-lua">GPU.<span class="hljs-built_in">print</span>(text, x, y, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, r, sx, sy, ox, oy, kx, ky)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-24"></a><a href="#arguments-24" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text to draw.</li>
+<li><strong>&lt;x&gt; (number):</strong> The X coord to draw at.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y coord to draw at.</li>
+<li><strong><code>false</code> (boolean)</strong></li>
+<li><strong><code>false</code> (boolean)</strong></li>
+<li><strong>[r] (number) (Default:<code>0</code>):</strong> Rotation (radians).</li>
+<li><strong>[sx] (number) (Default:<code>1</code>):</strong> Scale factor (x-axis).</li>
+<li><strong>[sy] (number) (Default:<code>sx</code>):</strong> Scale factor (y-axis).</li>
+<li><strong>[ox] (number) (Default:<code>0</code>):</strong> Origin offset (x-axis).</li>
+<li><strong>[oy] (number) (Default:<code>0</code>):</strong> Origin offset (y-axis).</li>
+<li><strong>[kx] (number) (Default:<code>0</code>):</strong> Shear factor (x-axis).</li>
+<li><strong>[ky] (number) (Default:<code>0</code>):</strong> Shear factor (y-axis).</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="3-print-in-terminal-grid-way"></a><a href="#3-print-in-terminal-grid-way" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Print in terminal grid way.</h5>
+<pre><code class="hljs css language-lua">GPU.<span class="hljs-built_in">print</span>(text)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-25"></a><a href="#arguments-25" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text to draw.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="4-print-in-terminal-grid-without-auto-newline"></a><a href="#4-print-in-terminal-grid-without-auto-newline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Print in terminal grid without auto newline.</h5>
+<pre><code class="hljs css language-lua">GPU.<span class="hljs-built_in">print</span>(text, <span class="hljs-literal">false</span>)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-26"></a><a href="#arguments-26" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text to draw.</li>
+<li><strong><code>false</code> (boolean)</strong></li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="5-print-in-terminal-grid-directly-without-wrapping-nor-new-line"></a><a href="#5-print-in-terminal-grid-directly-without-wrapping-nor-new-line" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Print in terminal grid directly without wrapping nor new line.</h5>
+<pre><code class="hljs css language-lua">GPU.<span class="hljs-built_in">print</span>(text, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-27"></a><a href="#arguments-27" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text to draw.</li>
+<li><strong><code>false</code> (boolean)</strong></li>
+<li><strong><code>true</code> (boolean)</strong></li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuprintbackspace"></a><a href="#gpuprintbackspace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.printBackspace</h3>
+<p>Deletes the last printed character via the 3rd and 4th variants of <code>print()</code>, and it updates the cursor position.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usages-8"></a><a href="#usages-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-delete-the-last-character"></a><a href="#1-delete-the-last-character" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Delete the last character:</h5>
+<pre><code class="hljs css language-lua">GPU.printBackspace(c)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-28"></a><a href="#arguments-28" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;c&gt; (number):</strong> The background color to fill the character with (<strong>-1</strong>,<strong>15</strong>), <strong>-1</strong> means no background, defaults to the current print cursor background color.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-delete-the-last-character-without-doing-a-carriage-return-if-needed"></a><a href="#2-delete-the-last-character-without-doing-a-carriage-return-if-needed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Delete the last character without doing a carriage return if needed:</h5>
+<pre><code class="hljs css language-lua">GPU.printBackspace(c, <span class="hljs-literal">true</span>)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-29"></a><a href="#arguments-29" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;c&gt; (number):</strong> The background color to fill the character with (<strong>-1</strong>,<strong>15</strong>), <strong>-1</strong> means no background, defaults to the current print cursor background color.</li>
+<li><strong><code>true</code> (boolean)</strong></li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuprintcursor"></a><a href="#gpuprintcursor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.printCursor</h3>
+<p>Changes the print cursor position used by <code>print()</code> in the grid variant.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The positions are on a characters grid, the size of the grid can be requested from <code>termSize()</code>.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="usages-9"></a><a href="#usages-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usages:</h4>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="1-set-cursor-position"></a><a href="#1-set-cursor-position" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Set cursor position:</h5>
+<pre><code class="hljs css language-lua">GPU.printCursor(x, y, bgcolor)
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="arguments-30"></a><a href="#arguments-30" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h6>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The X coord of the cursor in characters, defaults to the current X coord.</li>
+<li><strong>&lt;y&gt; (number):</strong> The Y corrd of the cursor in characters, defaults to the current Y coord.</li>
+<li><strong>&lt;bgcolor&gt; (number):</strong> The background color used when printing (<strong>-1</strong>,<strong>15</strong>), <strong>-1</strong> means no background, defaults to the current background color.</li>
+</ul>
+<hr>
+<h5><a class="anchor" aria-hidden="true" id="2-get-cursor-position"></a><a href="#2-get-cursor-position" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Get cursor position</h5>
+<pre><code class="hljs css language-lua">x, y, bgcolor = GPU.printCursor()
+</code></pre>
+<h6><a class="anchor" aria-hidden="true" id="returns-12"></a><a href="#returns-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h6>
+<ul>
+<li><strong>x (number):</strong> The current X coord of the cursor in characters.</li>
+<li><strong>y (number):</strong> The current Y corrd of the cursor in characters.</li>
+<li><strong>bgcolor (number):</strong> The current background color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupushcolor"></a><a href="#gpupushcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.pushColor</h3>
+<p>Pushes the current active color to the ColorStack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.pushColor()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupushmatrix"></a><a href="#gpupushmatrix" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.pushMatrix</h3>
+<p>Pushes the current active camera transformations to the MatrixStack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.pushMatrix()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpupushpalette"></a><a href="#gpupushpalette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.pushPalette</h3>
+<p>Pushes the current color mapping and transparent colors list to the palettes stack.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.pushPalette()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuquad"></a><a href="#gpuquad" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.quad</h3>
+<p>Creates a new quad.</p>
+<p>Creates a new quad.</p>
+<p>Quads can be used to select a part of an image to draw. In this way, one large images atlas (sheet) can be loaded, and then split up into sub-images.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">q = GPU.quad(x, y, w, h, sw, sh)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-31"></a><a href="#arguments-31" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The x coord of the quad's top-left corner.</li>
+<li><strong>&lt;y&gt; (number):</strong> The y coord of the quad's top-left corner.</li>
+<li><strong>&lt;w&gt; (number):</strong> The width of the quad.</li>
+<li><strong>&lt;h&gt; (number):</strong> The height of the quad.</li>
+<li><strong>&lt;sw&gt; (number):</strong> The width of the reference image.</li>
+<li><strong>&lt;sh&gt; (number):</strong> The height of the reference image.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-13"></a><a href="#returns-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>q (<a href="/WIP/docs/peripherals_gpu_quad">GPU.quad</a>):</strong> The created quad</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpurect"></a><a href="#gpurect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.rect</h3>
+<p>Draws a rectangle on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The arguments can be passed in a table</p>
+</blockquote>
+<pre><code class="hljs css language-lua">GPU.rect(x, y, w, h, l, c)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-32"></a><a href="#arguments-32" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x&gt; (number):</strong> The top-left x position of the rectangle.</li>
+<li><strong>&lt;y&gt; (number):</strong> The top-left y position of the rectangle.</li>
+<li><strong>&lt;w&gt; (number):</strong> The width of rectangle.</li>
+<li><strong>&lt;h&gt; (number):</strong> The height of rectangle.</li>
+<li><strong>[l] (boolean) (Default:<code>false</code>):</strong> (false/nil) The rectangle will be filled, (true) The rectangle will have only lines (border).</li>
+<li><strong>&lt;c&gt; (number):</strong> The color of the rectangle (0-15), defaults to the active color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuscreenheight"></a><a href="#gpuscreenheight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.screenHeight</h3>
+<p>Returns the height of the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">h = GPU.screenHeight()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-14"></a><a href="#returns-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>h (number):</strong> The height of the screen (By default - 128)</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuscreensize"></a><a href="#gpuscreensize" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.screenSize</h3>
+<p>Returns the dimensions of the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">w, h = GPU.screenSize()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-15"></a><a href="#returns-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>w (number):</strong> The width of the screen (By default - 192)</li>
+<li><strong>h (number):</strong> The height of the screen (By default - 128)</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuscreenwidth"></a><a href="#gpuscreenwidth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.screenWidth</h3>
+<p>Returns the width of the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">w = GPU.screenWidth()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-16"></a><a href="#returns-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>w (number):</strong> The width of the screen (By default - 192)</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuscreenshot"></a><a href="#gpuscreenshot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.screenshot</h3>
+<p>Takes a screenshot of the canvas (without the cursor), and returns its imagedata.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">imgdata = GPU.screenshot(x, y, w, h)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-33"></a><a href="#arguments-33" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>[x] (number) (Default:<code>0</code>):</strong> The top-left X coord of the area to take the screenshot of.</li>
+<li><strong>[y] (number) (Default:<code>0</code>):</strong> The top-left Y coord of the area to take the screenshot of.</li>
+<li><strong>&lt;w&gt; (number):</strong> The width of the area to take the screenshot of.</li>
+<li><strong>&lt;h&gt; (number):</strong> The height of the area to take the screenshot of.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-17"></a><a href="#returns-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>imgdata (<a href="/WIP/docs/peripherals_gpu_imagedata">GPU.imageData</a>):</strong> The created imagedata object.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpustartgifrecording"></a><a href="#gpustartgifrecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.startGifRecording</h3>
+<p>Start LIKO-12 screen Gif recording by code.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">GPU.startGifRecording()
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gputermheight"></a><a href="#gputermheight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.termHeight</h3>
+<p>Returns height of the terminal in characters.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>Custom fonts can change the output values, don't assume anything.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">h = GPU.termHeight()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-18"></a><a href="#returns-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>h (number):</strong> The height of the terminal</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gputermsize"></a><a href="#gputermsize" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.termSize</h3>
+<p>Returns size of the terminal in characters.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>Custom fonts can change the output values, don't assume anything.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">w, h = GPU.termSize()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-19"></a><a href="#returns-19" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>w (number):</strong> The width of the terminal</li>
+<li><strong>h (number):</strong> The height of the terminal</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gputermwidth"></a><a href="#gputermwidth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.termWidth</h3>
+<p>Returns width of the terminal in characters.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>Custom fonts can change the output values, don't assume anything.</p>
+</blockquote>
+<pre><code class="hljs css language-lua">w = GPU.termWidth()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="returns-20"></a><a href="#returns-20" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>w (number):</strong> The width of the terminal</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gputriangle"></a><a href="#gputriangle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.triangle</h3>
+<p>Draws a triangle on the screen.</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<blockquote>
+<p>The arguments can be passed in a table</p>
+</blockquote>
+<pre><code class="hljs css language-lua">GPU.triangle(x1, y1, x2, y2, x3, y3, l, c)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-34"></a><a href="#arguments-34" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;x1&gt; (number):</strong> The first x coordinate of triangle vector.</li>
+<li><strong>&lt;y1&gt; (number):</strong> The first y coordinate of triangle vector.</li>
+<li><strong>&lt;x2&gt; (number):</strong> The second x coordinate of triangle vector.</li>
+<li><strong>&lt;y2&gt; (number):</strong> The second y coordinate of triangle vector.</li>
+<li><strong>&lt;x3&gt; (number):</strong> The third x coordinate of triangle vector.</li>
+<li><strong>&lt;y3&gt; (number):</strong> The third y coordinate of triangle vector.</li>
+<li><strong>[l] (boolean) (Default:<code>false</code>):</strong> (false/nil) The triangle will be filled, (true) The triangle will have only lines (outline).</li>
+<li><strong>&lt;c&gt; (number):</strong> The color of triangle (0-15), defaults to the active color.</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="gpuwraptext"></a><a href="#gpuwraptext" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GPU.wrapText</h3>
+<p>Gets formatting information for text, given a wrap limit.</p>
+<p>Gets formatting information for text, given a wrap limit.</p>
+<p>This function accounts for newlines correctly (i.e. '\n').</p>
+<ul>
+<li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+<li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
+</ul>
+<pre><code class="hljs css language-lua">width, wrappedText = GPU.wrapText(text, wraplimit)
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="arguments-35"></a><a href="#arguments-35" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
+<ul>
+<li><strong>&lt;text&gt; (string):</strong> The text that will be wrapped.</li>
+<li><strong>&lt;wraplimit&gt; (number):</strong> The maximum width in pixels of each line that text is allowed before wrapping.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="returns-21"></a><a href="#returns-21" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
+<ul>
+<li><strong>width (string):</strong> The maximum width of the wrapped text.</li>
+<li><strong>wrappedText (table):</strong> A sequence containing each line of text that was wrapped.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="objects"></a><a href="#objects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objects:</h2>
+<ul>
+<li><a href="/WIP/docs/peripherals_gpu_fontdata">fontData</a> - fontData, modifiable pixel data, not drawable, convert to an font to print with.</li>
+<li><a href="/WIP/docs/peripherals_gpu_image">image</a> - Drawable Image, not modifiable, convert to imageData to modify.</li>
+<li><a href="/WIP/docs/peripherals_gpu_imagedata">imageData</a> - ImageData, modifiable pixel data, not drawable, convert to an image to draw.</li>
+<li><a href="/WIP/docs/peripherals_gpu_quad">quad</a> - Quad, a region from an image, used when drawing an image to only draw that section.</li>
+<li><a href="/WIP/docs/peripherals_gpu_spritebatch">spriteBatch</a> - Spritebatch, draw multiple parts of an image at once instantly, useful for maps.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/WIP/docs/peripherals_gamepad"><span class="arrow-prev">← </span><span>Gamepad</span></a><a class="docs-next button" href="/WIP/docs/peripherals_hdd"><span>HDD - Hard Disk Drive</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#methods">Methods:</a><ul class="toc-headings"><li><a href="#gpu_systemmessage">GPU._systemMessage</a></li><li><a href="#gpucam">GPU.cam</a></li><li><a href="#gpucircle">GPU.circle</a></li><li><a href="#gpuclear">GPU.clear</a></li><li><a href="#gpuclearmatrixstack">GPU.clearMatrixStack</a></li><li><a href="#gpuclip">GPU.clip</a></li><li><a href="#gpucolor">GPU.color</a></li><li><a href="#gpucolorpalette">GPU.colorPalette</a></li><li><a href="#gpucursor">GPU.cursor</a></li><li><a href="#gpuellipse">GPU.ellipse</a></li><li><a href="#gpuendgifrecording">GPU.endGifRecording</a></li><li><a href="#gpuflip">GPU.flip</a></li><li><a href="#gpufontheight">GPU.fontHeight</a></li><li><a href="#gpufontsize">GPU.fontSize</a></li><li><a href="#gpufontwidth">GPU.fontWidth</a></li><li><a href="#gpugetlabelimage">GPU.getLabelImage</a></li><li><a href="#gpugetmpos">GPU.getMPos</a></li><li><a href="#gpuimage">GPU.image</a></li><li><a href="#gpuimagedata">GPU.imagedata</a></li><li><a href="#gpuisgifrecording">GPU.isGifRecording</a></li><li><a href="#gpuismdown">GPU.isMDown</a></li><li><a href="#gpuline">GPU.line</a></li><li><a href="#gpupal">GPU.pal</a></li><li><a href="#gpupalt">GPU.palt</a></li><li><a href="#gpupausegifrecording">GPU.pauseGifRecording</a></li><li><a href="#gpupoint">GPU.point</a></li><li><a href="#gpupolygon">GPU.polygon</a></li><li><a href="#gpupopcolor">GPU.popColor</a></li><li><a href="#gpupopmatrix">GPU.popMatrix</a></li><li><a href="#gpupoppalette">GPU.popPalette</a></li><li><a href="#gpuprint">GPU.print</a></li><li><a href="#gpuprintbackspace">GPU.printBackspace</a></li><li><a href="#gpuprintcursor">GPU.printCursor</a></li><li><a href="#gpupushcolor">GPU.pushColor</a></li><li><a href="#gpupushmatrix">GPU.pushMatrix</a></li><li><a href="#gpupushpalette">GPU.pushPalette</a></li><li><a href="#gpuquad">GPU.quad</a></li><li><a href="#gpurect">GPU.rect</a></li><li><a href="#gpuscreenheight">GPU.screenHeight</a></li><li><a href="#gpuscreensize">GPU.screenSize</a></li><li><a href="#gpuscreenwidth">GPU.screenWidth</a></li><li><a href="#gpuscreenshot">GPU.screenshot</a></li><li><a href="#gpustartgifrecording">GPU.startGifRecording</a></li><li><a href="#gputermheight">GPU.termHeight</a></li><li><a href="#gputermsize">GPU.termSize</a></li><li><a href="#gputermwidth">GPU.termWidth</a></li><li><a href="#gputriangle">GPU.triangle</a></li><li><a href="#gpuwraptext">GPU.wrapText</a></li></ul></li><li><a href="#objects">Objects:</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/WIP/" class="nav-home"><img src="/WIP/img/favicon.ico" alt="LIKO-12"/></a><div><h5>Docs</h5><a href="/WIP/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/WIP/docs/en/doc2.html">Guides (or other categories)</a><a href="/WIP/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a><a href="https://twitter.com/ramilego4game" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/WIP/blog">Blog</a><a href="https://github.com/LIKO-12">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/LIKO-12/LIKO-12/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 The LIKO-12 Organization</section></footer></div></body></html>
