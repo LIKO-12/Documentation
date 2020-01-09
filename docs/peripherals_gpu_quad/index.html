@@ -59,51 +59,7 @@
 <li><strong>Available since:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
 <li><strong>Last updated in:</strong> <em>GPU:</em> v1.0.0, <em>LIKO-12:</em> v0.8.0</li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="methods"></a><a href="#methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods:</h2>
-<hr>
-<h3><a class="anchor" aria-hidden="true" id="quadgettexturedimensions"></a><a href="#quadgettexturedimensions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>quad:getTextureDimensions</h3>
-<p>Gets reference image dimensions initially specified in GPU.quad().</p>
-<ul>
-<li><strong>Available since:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-<li><strong>Last updated in:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-</ul>
-<pre><code class="hljs css language-lua">sw, sh = quad:getTextureDimensions()
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="returns"></a><a href="#returns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
-<ul>
-<li><strong>sw (number):</strong> The image width used by the quad.</li>
-<li><strong>sh (number):</strong> The image height used by the quad.</li>
-</ul>
-<hr>
-<h3><a class="anchor" aria-hidden="true" id="quadgetviewport"></a><a href="#quadgetviewport" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>quad:getViewport</h3>
-<p>Gets the current viewport of this quad.</p>
-<ul>
-<li><strong>Available since:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-<li><strong>Last updated in:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-</ul>
-<pre><code class="hljs css language-lua">x, y, w, h = quad:getViewport()
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="returns-1"></a><a href="#returns-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns:</h4>
-<ul>
-<li><strong>x (number):</strong> The x coord of the quad's top-left corner.</li>
-<li><strong>y (number):</strong> The y coord of the quad's top-left corner.</li>
-<li><strong>w (number):</strong> The width of the quad.</li>
-<li><strong>h (number):</strong> The height of the quad.</li>
-</ul>
-<hr>
-<h3><a class="anchor" aria-hidden="true" id="quadsetviewport"></a><a href="#quadsetviewport" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>quad:setViewport</h3>
-<p>Sets the viewport of the quad.</p>
-<ul>
-<li><strong>Available since:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-<li><strong>Last updated in:</strong> <em>quad:</em> v1.0.0, <em>LIKO-12:</em> v0.6.0</li>
-</ul>
-<pre><code class="hljs css language-lua">quad:setViewport(x, y, w, h)
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="arguments"></a><a href="#arguments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments:</h4>
-<ul>
-<li><strong>&lt;x&gt; (number):</strong> The x coord of the quad's top-left corner.</li>
-<li><strong>&lt;y&gt; (number):</strong> The y coord of the quad's top-left corner.</li>
-<li><strong>&lt;w&gt; (number):</strong> The width of the quad.</li>
-<li><strong>&lt;h&gt; (number):</strong> The height of the quad.</li>
-</ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/WIP/docs/peripherals_gpu_imagedata"><span class="arrow-prev">← </span><span class="function-name-prevnext">GPU / imageData</span></a><a class="docs-next button" href="/WIP/docs/peripherals_gpu_spritebatch"><span class="function-name-prevnext">GPU / spriteBatch</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#methods">Methods:</a><ul class="toc-headings"><li><a href="#quadgettexturedimensions">quad:getTextureDimensions</a></li><li><a href="#quadgetviewport">quad:getViewport</a></li><li><a href="#quadsetviewport">quad:setViewport</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/WIP/" class="nav-home"><img src="/WIP/img/favicon.ico" alt="LIKO-12"/></a><div><h5>Docs</h5><a href="/WIP/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/WIP/docs/en/doc2.html">Guides (or other categories)</a><a href="/WIP/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a><a href="https://twitter.com/ramilego4game" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/WIP/blog">Blog</a><a href="https://github.com/LIKO-12">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/LIKO-12/LIKO-12/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 The LIKO-12 Organization</section></footer></div></body></html>
+<blockquote>
+<p>This object has no events.</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/WIP/docs/peripherals_gpu_imagedata"><span class="arrow-prev">← </span><span class="function-name-prevnext">GPU / imageData</span></a><a class="docs-next button" href="/WIP/docs/peripherals_gpu_spritebatch"><span class="function-name-prevnext">GPU / spriteBatch</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/WIP/" class="nav-home"><img src="/WIP/img/favicon.ico" alt="LIKO-12"/></a><div><h5>Docs</h5><a href="/WIP/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/WIP/docs/en/doc2.html">Guides (or other categories)</a><a href="/WIP/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="https://discord.gg/GDtHrsJ">Project Chat (Discord)</a><a href="https://twitter.com/ramilego4game" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/WIP/blog">Blog</a><a href="https://github.com/LIKO-12">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/LIKO-12/LIKO-12/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 The LIKO-12 Organization</section></footer></div></body></html>
